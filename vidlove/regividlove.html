@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="register">
+    <link rel="stylesheet" href="backgroud.css" type="text/css">
+    <title>Register</title>
+</head>
+<style>
+    .contentcenter {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<main>
+    <img src="logo_thai_white1 1.png" alt="logovidva" height="75px" >
+    <img src="สโมขาว 1.png" alt="สโมขาว" height="50px" style="padding-bottom: 15px;" >
+</main>
+<body>
+    <div class="box">
+        <form id="form" action="#" autocomplete="off">
+            <img src="just lego.png" alt="justlogo" class="center" >
+            <div>
+                <h1>Register</h1>
+                <h1>ลงทะเบียนเข้างาน</h1>
+            </div>
+            <div>
+                <label for="ชื่อจริง-นามสกุล">ชื่อจริง-นามสกุล</label><br/>
+                <input id="ชื่อจริง-นามสกุล" name="ชื่อจริง-นามสกุล" type="text" placeholder="ชื่อจริง-นามสกุล" class="center" required>
+            </div>
+            <div>
+                <label for="status" >สถานภาพ</label><br/>
+                <select name="status" id="status"  class="center" >
+                  <option value="Custudent">นิสิตจุฬา</option>
+                  <option value="teacher">อาจารย์และบุคลากรจุฬส</option>
+                  <option value="student">นักเรียน/นักศึกษา</option>
+                  <option value="anthoer">ประชาชนทั่วไป</option>
+                </select>
+            </div>
+            <div>
+                <label for="รหัสนิสิต">รหัสนิสิต</label><br/>
+                <input id="รหัสนิสิต" name="รหัสนิสิต" type="text" placeholder="รหัสนิสิต" class="center">
+            </div>
+            <br>
+            <input type="submit" id="ลงทะเบียน" name="ลงทะเบียน" value="ลงทะเบียน" class="center">
+        </form>
+    </div>
+</body>
+</html>
+
