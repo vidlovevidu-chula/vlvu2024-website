@@ -1,0 +1,27 @@
+---
+import Custom from "../components/Custom";
+import Avatar from "../components/Avatar";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar";
+---
+
+<BaseLayout>
+  <div
+    class="flex min-h-96 max-w-[480px] w-full flex-col items-stretch mx-auto pt-12 bg-web-bg"
+  >
+    <!-- font testing -->
+    <!-- <div class="font-line text-xl">สวัสดีครับ</div>
+  <div class="font-gently text-xl">Hello hi</div> -->
+    <!-- font testing -->
+
+    <div class="flex justify-center">
+      <Avatar client:load />
+    </div>
+    <div class="bg-white h-screen justify-center items-center">
+      <div class="justify-center items-cent">
+        <Navbar client:load />
+      </div>
+      <Custom client:load />
+    </div>
+  </div>
+</BaseLayout>
