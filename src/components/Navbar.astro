@@ -1,0 +1,61 @@
+---
+import "../global.css";
+---
+
+<div
+  class="flex flex-wrap items-center mx-10 pt-12 justify-center sticky top-0 mb-12"
+>
+  <div class="font-tomyam font-normal text-center text-white text-4xl">
+    VLVU2024
+  </div>
+  <div class="flex absolute right-0 bottom-0 m-auto">
+    <button id="toggle" class="ml-7">
+      <svg
+        class="w-7 h-7"
+        fill="#ffffff"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        ></path>
+      </svg>
+    </button>
+    <div
+      id="collapseMenu"
+      class="mt-5 hidden absolute right-0 w-max top-5 bg-white bg-opacity-80 text-black rounded pt-1"
+    >
+      <ul class="text-right grid grid-cols-1 divide-y *:py-3 *:mx-3 rounded-lg">
+        <li>
+          <a href="" class="font-semibold">MBTI test</a>
+        </li>
+        <li>
+          <a href="" class="font-semibold">Announcement</a>
+        </li>
+        <li>
+          <a href="" class="font-semibold">Your Ticket</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var toggleBtn = document.getElementById("toggle");
+  var collapseMenu = document.getElementById("collapseMenu");
+
+  function handleClick() {
+    if (collapseMenu && collapseMenu.style.display === "block") {
+      collapseMenu.style.display = "none";
+    } else {
+      if (collapseMenu) {
+        collapseMenu.style.display = "block";
+      }
+    }
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", handleClick);
+  }
+</script>
