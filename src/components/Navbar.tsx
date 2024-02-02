@@ -16,19 +16,14 @@ const Navbar = () => {
   const Menus = [
     { id: 0, name: "Body", dis: "translate-x-0" },
     { id: 1, name: "Eye", dis: "translate-x-36" },
-    {
-      id: 2,
-      name: "BackHair",
-      dis: "translate-x-36",
-    },
-    { id: 3, name: "Hair", dis: "translate-x-36" },
-    { id: 4, name: "BackHair", dis: "translate-x-36" },
-    { id: 5, name: "Mounth", dis: "translate-x-36" },
-    { id: 6, name: "Clothes", dis: "translate-x-36" },
-    { id: 7, name: "Pants", dis: "translate-x-36" },
-    { id: 8, name: "Chop", dis: "translate-x-36" },
-    { id: 9, name: "Shoes", dis: "translate-x-36" },
-    { id: 10, name: "Glasses", dis: "translate-x-72" },
+    { id: 2, name: "Hair", dis: "translate-x-36" },
+    { id: 3, name: "BackHair", dis: "translate-x-36" },
+    { id: 4, name: "Mounth", dis: "translate-x-36" },
+    { id: 5, name: "Clothes", dis: "translate-x-36" },
+    { id: 6, name: "Pants", dis: "translate-x-36" },
+    { id: 7, name: "Chop", dis: "translate-x-36" },
+    { id: 8, name: "Shoes", dis: "translate-x-36" },
+    { id: 9, name: "Glasses", dis: "translate-x-72" },
   ];
 
   const [active, setActive] = useState(0);
@@ -39,7 +34,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // Update the 'id' state within the 'useEffect' hook
-    if (active === 10) {
+    if (active === 9) {
       setAfer("");
       setId(2);
     } else if (active >= 1) {
