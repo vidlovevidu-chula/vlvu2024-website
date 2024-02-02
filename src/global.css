@@ -2,7 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Register your custom font family and tell the browser where to find it. */
 @font-face {
-    font-family: "tomyam";
-    src: url('/fonts/tomyam.ttf');
+  font-family: "tomyam";
+  src: url("/fonts/tomyam.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINE";
+  src: url("/fonts/LINESeedSansTH_W_Rg.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GentlyDemo";
+  src: url("/fonts/GentyDemo-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
