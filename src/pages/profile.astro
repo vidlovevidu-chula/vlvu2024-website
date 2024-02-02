@@ -1,11 +1,11 @@
 ---
 import Custom from "../components/Custom";
 import Avatar from "../components/Avatar";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<BaseLayout>
+<Layout>
   <div
     class="flex min-h-96 max-w-[480px] w-full flex-col items-stretch mx-auto pt-12 bg-web-bg"
   >
@@ -25,4 +25,4 @@ import Navbar from "../components/Navbar";
       <Custom client:load />
     </div>
   </div>
-</BaseLayout>
+</Layout>
