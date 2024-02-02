@@ -6,6 +6,9 @@
 @font-face {
   font-family: "tomyam";
   src: url("/fonts/tomyam.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
