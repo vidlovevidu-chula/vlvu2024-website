@@ -1,26 +1,17 @@
 ---
 import "../global.css";
+import Hamburger from "./Icon/Hamburger.astro";
 ---
 
 <div
   class="flex flex-wrap items-center mx-10 pt-12 justify-center sticky top-0 mb-12"
 >
-  <div class="font-tomyam font-normal text-center text-white text-4xl">
+  <div class="font-tomyam font-normal text-center text-white text-2xl">
     VLVU2024
   </div>
   <div class="flex absolute right-0 bottom-0 m-auto">
     <button id="toggle" class="ml-7">
-      <svg
-        class="w-7 h-7"
-        fill="#ffffff"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-        ></path>
-      </svg>
+      <Hamburger className="w-8 h-8 text-white" />
     </button>
     <div
       id="collapseMenu"
