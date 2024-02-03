@@ -1,0 +1,28 @@
+---
+import Custom from "../components/Custom";
+import Avatar from "../components/Avatar";
+import Navbar from "../components/Navbar";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <div
+    class="flex min-h-96 max-w-[480px] w-full flex-col items-stretch mx-auto pt-12 bg-web-bg"
+  >
+    <div class="flex justify-end">
+      <button
+        class="bg-white mr-6 w-[94px] h-8 font-line text-md font-bold rounded-2xl"
+        >Submit</button
+      >
+    </div>
+    <div class="flex justify-center">
+      <Avatar client:load />
+    </div>
+    <div class="bg-white h-screen justify-center items-center">
+      <div class="justify-center items-cent">
+        <Navbar client:load />
+      </div>
+      <Custom client:load />
+    </div>
+  </div>
+</Layout>
