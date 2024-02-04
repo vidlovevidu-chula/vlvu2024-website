@@ -9,9 +9,13 @@ import Layout from "../layouts/Layout.astro";
     <div class="max-w-screen-mobile mx-auto relative px-8">
       <Navbar />
 
-      <img src="assets/icon/cloud.svg" alt="cloud" class="absolute left-3 z-50" />
+      <img
+        src="assets/icon/cloud.svg"
+        alt="cloud"
+        class="absolute left-3 z-50"
+      />
       <Avatar />
-      
+
       <p
         class="font-tomyam font-normal text-center text-white text-4xl mt-2 mb-12"
       >
@@ -25,12 +29,15 @@ import Layout from "../layouts/Layout.astro";
             Event
           </p>
         </div>
-        <div class="flex flex-col justify-center items-center gap-2">
+        <a
+          href="/profile"
+          class="flex flex-col justify-center items-center gap-2"
+        >
           <img src="assets/icon/shirt.svg" alt="customize" class="w-[67px]" />
           <p class="font-line font-semibold text-center text-white text-lg">
             Customize
           </p>
-        </div>
+        </a>
         <div class="flex flex-col justify-center items-center gap-2">
           <img src="assets/icon/heart.svg" alt="relation" class="w-[67px]" />
           <p class="font-line font-semibold text-center text-white text-lg">
