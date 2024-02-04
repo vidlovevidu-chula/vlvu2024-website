@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+const { title } = Astro.props;
+
+export interface Props {
+  title?: string;
+}
 ---
 
-<BaseLayout title="Vid Love Vid U 2024">
+<BaseLayout title={title ?? "Vid Love Vid U 2024"}>
   <slot />
 </BaseLayout>
