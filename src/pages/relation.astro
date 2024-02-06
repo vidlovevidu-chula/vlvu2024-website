@@ -11,23 +11,43 @@ import Layout from "../layouts/Layout.astro";
       <Navbar />
       <!-- top navbar --> 
       
-      <!-- avatar --> 
-      <img
-        src="assets/icon/cloud.svg"
-        alt="cloud"
-        class="absolute left-3 z-50"
-      />
-      <Avatar />
+       <!-- avatar --> 
+       <div class="grid grid-col-2 grid-flow-col flex-wrap">
+        <div class="place-content-center overflow-hidden">
+          <img
+            src="assets/icon/cloud.svg"
+            alt="cloud"
+            class="absolute left-3 z-50"
+          />
+          <Avatar/>
 
-      <p
-        class="font-tomyam font-normal text-center text-white text-4xl mt-2 mb-12"
-      >
-        Maipro (temp)
-      </p>
+          <p
+            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
+          >
+            Maipro (temp)
+          </p>
+        </div>
+
+        <div class="place-content-center overflow-hidden">
+            <img
+              src="assets/icon/cloud.svg"
+              alt="cloud"
+              class="absolute right-3 z-50 scale-x-[-1]"            
+            />
+            <Avatar/>
+  
+            <p
+              class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
+            >
+              1234567891011121314151617 (temp)
+            </p>
+          </div>
+
+      </div>
       <!-- avatar --> 
 
       <!-- Bottom div --> 
-      <div class="grid grid-cols-3 place-items-center">
+      <div class="grid grid-cols-3 place-items-center ">
         <a 
           href="/event"
           class="flex flex-col justify-center items-center gap-2">

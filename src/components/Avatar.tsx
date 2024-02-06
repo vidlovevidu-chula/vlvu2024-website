@@ -26,11 +26,11 @@ const Avatar = () => {
   //        className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
 
   return (
-    <div className="relative">
+    <div className="flex w-full mx-auto max-h-full items-center object-cover">
       {$backhair === "" && (
         <img
           src={`/assets/body/${$body}.png`}
-          className="w-[450px] h-[450px] justify-center"
+          className="object-scale-down w-[450px] h-[450px] justify-center"
           alt="body"
         />
       )}
@@ -38,12 +38,12 @@ const Avatar = () => {
         <>
           <img
             src={`/assets/body/${$body}.png`}
-            className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+            className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2 "
             alt="body"
           />
           <img
             src={`/assets/backhair/${$backhair}.png`}
-            className="w-[450px] h-[450px] justify-center"
+            className="object-scale-down w-[450px] h-[450px] justify-center"
             alt="backhair"
           />
         </>
@@ -51,56 +51,56 @@ const Avatar = () => {
       {$eye !== "" && (
         <img
           src={`/assets/eye/${$eye}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="eye"
         />
       )}
       {$glasses !== "" && (
         <img
           src={`/assets/glasses/${$glasses}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="mounth"
         />
       )}
       {$hair !== "" && (
         <img
           src={`/assets/hair/${$hair}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="hair"
         />
       )}
       {$mounth !== "" && (
         <img
           src={`/assets/mounth/${$mounth}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="mounth"
         />
       )}
       {$clothes !== "" && (
         <img
           src={`/assets/clothes/${$clothes}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="clothes"
         />
       )}
       {$pants !== "" && (
         <img
           src={`/assets/pants/${$pants}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="pants"
         />
       )}
       {$chop !== "" && (
         <img
           src={`/assets/chop/${$chop}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
           alt="chop"
         />
       )}
       {$shoes !== "" && (
         <img
           src={`/assets/shoes/${$shoes}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-[238px] transform -translate-x-1/2"
+          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-[238px] transform -translate-x-1/2"
           alt="shoes"
         />
       )}
