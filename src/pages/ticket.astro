@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+    document.getElementById("down-ticket").addEventListener("click", function() {
+        const elementToCapture = document.getElementById("ticket-card");
+
+        // Set the background image of the capturing element to "none" before capturing
+        elementToCapture.style.backgroundImage = "none";
+
+        // Use html2canvas to capture the content as an image
+        html2canvas(elementToCapture, { quality: 1.0 ,scale: 2,backgroundColor: "transparent"}).then(function(canvas) {
+          // Remove the background by setting the canvas background to "transparent"
+            const ctx = canvas.getContext("2d");
+            ctx.globalCompositeOperation = "destination-over";
+            ctx.fillStyle = "transparent";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Convert the canvas content to a data URL (PNG format without compression)
+            const dataURL = canvas.toDataURL("image/png");
+
+            // Create a link element for downloading the image
+            const downloadLink = document.createElement("a");
+            downloadLink.href = dataURL;
+            downloadLink.download = "VidLoveVidU2024.png";
+            document.body.appendChild(downloadLink);
+
+            // Trigger a click on the link to start the download
+            downloadLink.click();
+
+            // Remove the link from the document
+            document.body.removeChild(downloadLink);
+
+            // Restore the original background image after capturing
+            elementToCapture.style.backgroundImage = "";
+        });
+    });
+    // document.getElementById("down-ticket").addEventListener("click", function() {
+    //     const elementToCapture = document.getElementById("ticket-card");
+
+    //     // Use html2canvas to capture the content as an image with higher resolution and a transparent background
+    //     html2canvas(elementToCapture, { quality: 1.0, scale: 2, backgroundColor: "transparent" }).then(function(canvas) {
+    //         // Convert the canvas content to a data URL (JPEG format with default compression)
+    //         const dataURL = canvas.toDataURL("image/jpeg", 0.8); // 0.8 is the quality parameter (0.0 to 1.0)
+
+    //         // Open Instagram with the image ready for sharing
+    //         window.location.href = `instagram://library?AssetPath=${encodeURIComponent(dataURL)}`;
+    //     });
+    // });
+</script>
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<div class="container">
+      <div class="card" id='ticket-card'>
+          <div class="username-box">
+            <p class="text-template">Username</p>
+          </div>
+          <img src="public/ดาวน์โหลด-03 5.svg" alt="" />
+          <div class="mbti-box">
+            <p class="text-template">MBTI</p>
+          </div>
+          <div class="character-box">
+            <img src="public/IMG_9059 2.png" alt="">
+          </div>
+      </div>
+      		<a class="download-box" id="down-ticket">
+       			<i class="gg-software-download"></i>
+        		<p class="text-down">Download</p>
+      		</a>
+    	</div>
+	</main>
+</Layout>
+
+<style>
+@import url('https://fonts.cdnfonts.com/css/zilla-slab');	
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.gg-software-download {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 16px;
+    height: 6px;
+    border: 2px solid;
+    border-top: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    margin-top: 8px
+}
+
+.gg-software-download::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    transform: rotate(-45deg);
+    left: 2px;
+    bottom: 4px
+}
+
+.gg-software-download::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+    left: 5px;
+    bottom: 5px
+}
+body {
+  font-family: 'Zilla Slab', sans-serif;
+  background-image: linear-gradient(#fbaeb4, #ffe3c4);
+}
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.card{
+  position: relative;
+  width: 275px;
+  height: auto;
+  background-color: transparent;
+  }
+.username-box{
+  position: absolute;
+  top: 62px;
+  left : 50%;
+  transform: translateX(-50%) ;
+  width: 210px;
+  height: 70px;
+  border-radius: 16px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.mbti-box{
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  bottom: 50px;
+  right: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-box{
+  position: absolute;
+  height: 260px;
+  width: 200px;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-box {
+  width: 173px;
+  height: 51px;
+  border-radius: 50px;
+  background-color: #e8b0b9;
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 10%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0px;
+}
+.download-box:hover {
+  background-color: #d3a0a8;
+}
+
+.download-box i {
+  color: white;
+  font-size: xx-large;
+}
+
+.text-down {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 10px;
+  color: white;
+}
+.text-template{
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: black;
+  color: #C697C5;
+  font-weight: 700;
+}
+img {
+  width: 275px;
+  height: auto;
+}
+</style>
