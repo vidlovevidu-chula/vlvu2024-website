@@ -1,0 +1,51 @@
+---
+import Hamburger from "./Icon/Hamburger.astro";
+---
+
+<div
+  class="flex flex-wrap items-center mx-10 pt-12 justify-center sticky top-0 mb-12 z-50"
+>
+  <div class="font-tomyam font-normal text-center text-white text-2xl">
+    VLVU2024
+  </div>
+  <div class="flex absolute right-0 bottom-0 m-auto">
+    <button id="toggle" class="ml-7">
+      <Hamburger className="w-8 h-8 text-white" />
+    </button>
+    <div
+      id="collapseMenu"
+      class="mt-5 hidden absolute right-0 w-max top-5 bg-white bg-opacity-80 text-black rounded pt-1"
+    >
+      <ul class="text-right grid grid-cols-1 divide-y *:py-3 *:mx-3 rounded-lg">
+        <li>
+          <a href="" class="font-tomyam font-normal text-xl">MBTI test</a>
+        </li>
+        <li>
+          <a href="" class="font-tomyam font-normal text-xl">Announcement</a>
+        </li>
+        <li>
+          <a href="" class="font-tomyam font-normal text-xl">Your Ticket</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var toggleBtn = document.getElementById("toggle");
+  var collapseMenu = document.getElementById("collapseMenu");
+
+  function handleClick() {
+    if (collapseMenu && collapseMenu.style.display === "block") {
+      collapseMenu.style.display = "none";
+    } else {
+      if (collapseMenu) {
+        collapseMenu.style.display = "block";
+      }
+    }
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", handleClick);
+  }
+</script>
