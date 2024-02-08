@@ -1,0 +1,16 @@
+html {
+    font-size: 22px;
+    font-family: "LINE Seed Sans TH";
+}
+
+body {
+    background: linear-gradient(180deg, #FBAEB4 0%, #FFE3C4 99.99%, rgba(251, 174, 180, 0.00) 100%), linear-gradient(164deg, #FBAEB4 14.16%, #FFBE98 91.16%, #FFBE98 91.16%);
+}
+
+body{display: flex;
+    width: 430px;
+    height: 932px;
+    padding: 0px 12px 0px 11px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;}

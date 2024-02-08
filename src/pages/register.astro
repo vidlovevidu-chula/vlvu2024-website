@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main
+    class="flex flex-col self-center items-center w-full font-line mx-auto max-w-screen-sm bg-web-bg pt-4 pb-16"
+  >
+    <div class="flex items-center">
+      <img
+        src="../public/assets/regis/logo_thai_white1 1.png"
+        alt="logovidva"
+        class="h-15"
+      />
+      <img
+        src="../public/assets/regis/สโมขาว 1.png"
+        alt="สโมขาว"
+        class="h-12 mb-2"
+      />
+    </div>
+
+    <div class="box">
+      <form id="form" action="#" autocomplete="off">
+        <img
+          src="../../public/assets/regis/just lego.png"
+          alt="justlogo"
+          class="center"
+        />
+        <div>
+          <h1>Register</h1>
+          <h1>ลงทะเบียนเข้างาน</h1>
+        </div>
+        <div>
+          <label for="ชื่อจริง-นามสกุล">ชื่อจริง-นามสกุล</label><br />
+          <input
+            id="ชื่อจริง-นามสกุล"
+            name="ชื่อจริง-นามสกุล"
+            type="text"
+            placeholder="ชื่อจริง-นามสกุล"
+            class="center"
+            required
+          />
+        </div>
+        <div>
+          <label for="status">สถานภาพ</label><br />
+          <select name="status" id="status" class="center">
+            <option value="Custudent">นิสิตจุฬา</option>
+            <option value="teacher">อาจารย์และบุคลากรจุฬา</option>
+            <option value="student">นักเรียน/นักศึกษา</option>
+            <option value="anthoer">ประชาชนทั่วไป</option>
+          </select>
+        </div>
+        <div>
+          <label for="รหัสนิสิต">รหัสนิสิต</label><br />
+          <input
+            id="รหัสนิสิต"
+            name="รหัสนิสิต"
+            type="text"
+            placeholder="รหัสนิสิต"
+            class="center"
+          />
+        </div>
+        <br />
+        <input
+          type="submit"
+          id="ลงทะเบียน"
+          name="ลงทะเบียน"
+          value="ลงทะเบียน"
+          class="center text-sm shadow-md"
+        />
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  form {
+    width: 356px;
+    height: 667px;
+    flex-shrink: 0;
+    border-radius: 21px;
+    opacity: 0.8;
+    background: #fff;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0%; /* 0px */
+    padding-bottom: 25px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  #ลงทะเบียน {
+    width: 297px;
+    height: 43px;
+    border-radius: 10px;
+    border-color: #fff;
+    background: var(--palette-2, #fbaeb4);
+  }
+
+  form label {
+    color: #d05783;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-left: 33px;
+  }
+
+  input {
+    padding: 16px;
+  }
+
+  input[type="text"],
+  select {
+    width: 297px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: #fff;
+  }
+
+  #status {
+    width: 297px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: #fff;
+  }
+
+  .box {
+    line-height: 60px;
+  }
+
+  .img-resize img {
+    width: 75px;
+  }
+
+  .img-resize {
+    width: 75px;
+    height: 75px;
+  }
+</style>
