@@ -4,8 +4,8 @@
 
 /* Register your custom font family and tell the browser where to find it. */
 @font-face {
-  font-family: "tomyam";
-  src: url("/fonts/tomyam.ttf");
+  font-family: "Tomyam";
+  src: url("/fonts/Tomyam.ttf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
