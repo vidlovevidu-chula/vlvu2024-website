@@ -26,7 +26,7 @@ const Avatar = () => {
   //        className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
 
   return (
-    <div className="flex w-full mx-auto max-h-full items-center object-cover">
+    <div className="relative">
       {$backhair === "" && (
         <img
           src={`/assets/body/${$body}.png`}
