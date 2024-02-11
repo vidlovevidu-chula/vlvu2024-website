@@ -12,12 +12,13 @@ import Layout from "../layouts/Layout.astro";
     <div class="flex justify-end">
       <a
         href="/main"
+        onclick="submit()"
         class="bg-white text-center mr-6 w-[94px] h-8 font-line text-md font-bold rounded-2xl flex items-center justify-center"
         >Submit</a
       >
     </div>
     <div class="flex justify-center">
-      <Avatar client:load />
+      <Avatar client:only />
     </div>
     <div class="bg-white h-screen justify-center items-center">
       <div class="justify-center items-cent">
@@ -27,3 +28,57 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </div>
 </Layout>
+
+<script is:inline>
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  async function submit() {
+    const datas = getCookie("characters");
+    const user_name = getCookie("user_name");
+    const jsonChar = JSON.parse(datas);
+
+    const body = jsonChar.body;
+    const eye = jsonChar.eye;
+    const hair = jsonChar.hair;
+    const backhair = jsonChar.backhair;
+    const pants = jsonChar.pants;
+    const clothes = jsonChar.clothes;
+    const chop = jsonChar.chop;
+    const shoes = jsonChar.shoes;
+    const glasses = jsonChar.glasses;
+    const mounth = jsonChar.mounth;
+
+    const data = new FormData();
+    data.append('user_name', user_name);
+    data.append("body", body);
+    data.append("eye", eye);
+    data.append("hair", hair);
+    data.append("back_hair", backhair);
+    data.append("pants", pants);
+    data.append('clothes', clothes);
+    data.append('chop', chop);
+    data.append('shoes', shoes);
+    data.append('glasses', glasses);
+    data.append('mounth', mounth);
+
+    const response = await fetch("/api/characters", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+    });
+    const res = await response.json();
+  }
+</script>

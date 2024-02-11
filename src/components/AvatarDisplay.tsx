@@ -1,29 +1,47 @@
-import { useStore } from "@nanostores/react";
-import {
-  backhair,
-  body,
-  chop,
-  clothes,
-  eye,
-  glasses,
-  hair,
-  mounth,
-  pants,
-  shoes,
-} from "../store";
+const AvatarDisplay = () => {
+  function getCookie(cname: string) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  let _data = getCookie("characters");
 
-const Avatar = () => {
-  const $body = useStore(body);
-  const $backhair = useStore(backhair);
-  const $chop = useStore(chop);
-  const $clothes = useStore(clothes);
-  const $eye = useStore(eye);
-  const $glasses = useStore(glasses);
-  const $hair = useStore(hair);
-  const $mounth = useStore(mounth);
-  const $pants = useStore(pants);
-  const $shoes = useStore(shoes);
+  if (_data === "") {
+    _data = JSON.stringify({
+      body: "body1",
+      backhair: "",
+      chop: "",
+      clothes: "",
+      eye: "",
+      glasses: "",
+      hair: "",
+      mounth: "",
+      pants: "",
+      shoes: "",
+    });
+  }
 
+  const data = JSON.parse(_data);
+  const $body = data.body;
+  const $backhair = data.backhair;
+  const $chop = data.chop;
+  const $clothes = data.clothes;
+  const $eye = data.eye;
+  const $glasses = data.glasses;
+  const $hair = data.hair;
+  const $mounth = data.mounth;
+  const $pants = data.pants;
+  const $shoes = data.shoes;
 
   return (
     <div className="relative">
@@ -108,4 +126,4 @@ const Avatar = () => {
   );
 };
 
-export default Avatar;
+export default AvatarDisplay;

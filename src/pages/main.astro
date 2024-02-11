@@ -1,7 +1,9 @@
 ---
-import Avatar from "../components/Avatar";
+import AvatarDisplay from "../components/AvatarDisplay";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
+
+const name = Astro.cookies.get('name');
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">
@@ -17,12 +19,12 @@ import Layout from "../layouts/Layout.astro";
         alt="cloud"
         class="absolute left-3 z-50"
       />
-      <Avatar />
+      <AvatarDisplay client:only />
 
       <p
         class="font-tomyam font-normal text-center text-white text-4xl mt-2 mb-12"
       >
-        Maipro (temp)
+        {name?.value}
       </p>
       <!-- avatar --> 
 

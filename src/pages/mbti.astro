@@ -1,0 +1,84 @@
+---
+const { data } = Astro.props;
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <form id="form" action="/main" method="post">
+    <img
+      src="../../public/assets/regis/just lego.png"
+      alt="justlogo"
+      class="center"
+    />
+    <div>
+      <h1>Register</h1>
+      <h1>ลงทะเบียนเข้างาน</h1>
+    </div>
+    <div>
+      <label for="ชื่อจริง-นามสกุล"
+        >name<br />
+        <input
+          id="username"
+          name="name"
+          type="text"
+          placeholder="user name"
+          class="center"
+          required
+        />
+      </label>
+      <button
+        id="submit"
+        name="ลงทะเบียน"
+        value="ลงทะเบียน"
+        class="center text-sm shadow-md">ลงทะเบียน</button
+      >
+    </div>
+  </form>
+  <br />
+</Layout>
+
+<script is:inline>
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  const button = document.getElementById("submit");
+  button.addEventListener("click", async () => {
+    const name = getCookie("name");
+    const role = getCookie("role");
+    const student_id = getCookie("student_id");
+    const user_name = document.getElementById("username").value;
+
+    const data = new FormData();
+    data.append("name", name);
+    data.append("student_id", student_id);
+    data.append("user_name", user_name);
+    data.append("role", role);
+    setCookie('user_name', user_name, 30);
+    const response = await fetch("/api/user", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+    });
+    const res = await response.json();
+  });
+</script>
