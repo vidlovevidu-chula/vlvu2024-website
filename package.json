@@ -14,6 +14,7 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/ts-plugin": "^1.4.0",
+    "@astrojs/vercel": "^7.3.0",
     "@nanostores/react": "^0.7.1",
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
