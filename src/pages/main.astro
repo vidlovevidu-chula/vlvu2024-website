@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 
 const name = Astro.cookies.get('user_name');
+export const prerender = true;
+
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">

@@ -2,6 +2,8 @@
 import AvatarDisplay from "../components/AvatarDisplay";
 import Layout from "../layouts/Layout.astro";
 const name = Astro.cookies.get("name");
+export const prerender = true;
+
 ---
 
 <script>
