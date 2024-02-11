@@ -1,43 +1,55 @@
 ---
-import AvatarDisplay from '../components/AvatarDisplay';
-import Layout from '../layouts/Layout.astro';
-const name = Astro.cookies.get('name');
+import AvatarDisplay from "../components/AvatarDisplay";
+import Layout from "../layouts/Layout.astro";
+const name = Astro.cookies.get("name");
 ---
 
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script is:inline>
+<script>
+  import html2canvas from "html2canvas";
+
+  document
+    .getElementById("down-ticket")
+    ?.addEventListener("click", function () {
+      const elementToCapture = document.getElementById("ticket-card");
+
+      if (!elementToCapture) {
+        console.error("Element to capture not found.");
+        return;
+      }
+
+      html2canvas(elementToCapture, {
+        scale: 2,
+        backgroundColor: "#FBAEB4",
+      })
+        .then(function (canvas) {
+          const ctx = canvas.getContext("2d");
+
+          if (!ctx) {
+            console.error("Canvas context not available.");
+            return;
+          }
+
+          ctx.globalCompositeOperation = "destination-over";
+          ctx.fillStyle = "transparent";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          const dataURL = canvas.toDataURL("image/png");
+
+          const downloadLink = document.createElement("a");
+          downloadLink.href = dataURL;
+          downloadLink.download = "VidLoveVidU2024.png";
+          document.body.appendChild(downloadLink);
+
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+        })
+        .catch(function (error) {
+          console.error("Error while capturing:", error);
+        });
+    });
+
   // document.getElementById("down-ticket").addEventListener("click", function() {
   //     const elementToCapture = document.getElementById("ticket-card");
-
-        // Set the background image of the capturing element to "none" before capturing
-        //elementToCapture.style.backgroundImage = "";
-
-        // Use html2canvas to capture the content as an image
-        html2canvas(elementToCapture, { quality: 1.0 ,scale: 2,backgroundColor: "#FBAEB4"}).then(function(canvas) {
-          // Remove the background by setting the canvas background to "transparent"
-            const ctx = canvas.getContext("2d");
-            ctx.globalCompositeOperation = "destination-over";
-            ctx.fillStyle = "transparent";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Convert the canvas content to a data URL (PNG format without compression)
-            const dataURL = canvas.toDataURL("image/png");
-
-  //         // Create a link element for downloading the image
-  //         const downloadLink = document.createElement("a");
-  //         downloadLink.href = dataURL;
-  //         downloadLink.download = "VidLoveVidU2024.png";
-  //         document.body.appendChild(downloadLink);
-
-  //         // Trigger a click on the link to start the download
-  //         downloadLink.click();
-
-  //         // Remove the link from the document
-  //         document.body.removeChild(downloadLink);
-
-            // Restore the original background image after capturing
-        });
-    // document.getElementById("down-ticket").addEventListener("click", function() {
-    //     const elementToCapture = document.getElementById("ticket-card");
 
   //     // Use html2canvas to capture the content as an image with higher resolution and a transparent background
   //     html2canvas(elementToCapture, { quality: 1.0, scale: 2, backgroundColor: "transparent" }).then(function(canvas) {
@@ -51,29 +63,28 @@ const name = Astro.cookies.get('name');
 </script>
 
 <Layout title="Welcome to Astro.">
-	<main >
-		<div class="container" id='ticket-card'>
-      <div class="card" >
-          <div class="username-box">
-            <p class="text-template">{name?.value}</p>
-          </div>
-          <img src="ดาวน์โหลด-03 5.svg" alt="" />
-          <div class="mbti-box">
-            <p class="text-template">MBTI</p>
-          </div>
-          <div class="character-box">
-            <AvatarDisplay client:load/>
-          </div>
+  <main>
+    <div class="container" id="ticket-card">
+      <div class="card">
+        <div class="username-box">
+          <p class="text-template">{name?.value}</p>
+        </div>
+        <img src="ดาวน์โหลด-03 5.svg" alt="" />
+        <div class="mbti-box">
+          <p class="text-template">MBTI</p>
+        </div>
+        <div class="character-box">
+          <AvatarDisplay client:load />
+        </div>
       </div>
-
-    	</div>
-      <div class="items-center left-1/2">
-        <a class="download-box" id="down-ticket">
-          <i class="gg-software-download"></i>
-         <p class="text-down">Download</p>
-       </a>
-      </div>
-	</main>
+    </div>
+    <div class="items-center left-1/2">
+      <a class="download-box" id="down-ticket">
+        <i class="gg-software-download"></i>
+        <p class="text-down">Download</p>
+      </a>
+    </div>
+  </main>
 </Layout>
 
 <style>
