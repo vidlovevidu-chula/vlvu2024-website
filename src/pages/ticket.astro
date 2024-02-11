@@ -64,8 +64,8 @@ const name = Astro.cookies.get("name");
 
 <Layout title="Welcome to Astro.">
   <main>
-    <div class="container" id="ticket-card">
-      <div class="card">
+    <div class="container" >
+      <div class="card" id="ticket-card">
         <div class="username-box">
           <p class="text-template">{name?.value}</p>
         </div>
