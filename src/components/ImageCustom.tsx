@@ -42,7 +42,7 @@ const ImageCustom: React.FC<ImageCustomProps> = ({ src, alt, type }) => {
 
   const data = {
     body: $body,
-    backhair: $backhair,
+    back_hair: $backhair,
     chop: $chop,
     clothes: $clothes,
     eye: $eye,
@@ -63,11 +63,11 @@ const ImageCustom: React.FC<ImageCustomProps> = ({ src, alt, type }) => {
       case "backhair":
         if ($backhair === alt) {
           backhair.set("");
-          data.backhair = "";
+          data.back_hair = "";
           break;
         }
         backhair.set(alt);
-        data.backhair = alt;
+        data.back_hair = alt;
         break;
       case "hair":
         if ($hair === alt) {
@@ -76,7 +76,7 @@ const ImageCustom: React.FC<ImageCustomProps> = ({ src, alt, type }) => {
           break;
         }
         hair.set(alt);
-        data.hair = "";
+        data.hair = alt;
         break;
       case "eye":
         if ($eye === alt) {
@@ -143,7 +143,8 @@ const ImageCustom: React.FC<ImageCustomProps> = ({ src, alt, type }) => {
       default:
         break;
     }
-    setCookie('characters', JSON.stringify(data), 30);
+    localStorage.setItem('chars', JSON.stringify(data));
+    console.log("Test", data)
   };
   return (
     <img

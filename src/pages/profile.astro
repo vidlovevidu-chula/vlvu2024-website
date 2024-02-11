@@ -46,14 +46,14 @@ import Layout from "../layouts/Layout.astro";
     return "";
   }
   async function submit() {
-    const datas = getCookie("characters");
-    const user_name = getCookie("user_name");
+    const datas = localStorage.getItem('chars');
+    const user_name = getCookie("id");
     const jsonChar = JSON.parse(datas);
 
     const body = jsonChar.body;
     const eye = jsonChar.eye;
     const hair = jsonChar.hair;
-    const backhair = jsonChar.backhair;
+    const backhair = jsonChar.back_hair;
     const pants = jsonChar.pants;
     const clothes = jsonChar.clothes;
     const chop = jsonChar.chop;

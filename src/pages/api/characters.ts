@@ -18,9 +18,8 @@ export const POST: APIRoute = async ({ params, request }) => {
 
   const { data, error } = await supabase
     .from("character")
-    .insert([
+    .update([
       {
-        user_name: user_name,
         body: body,
         eye: eye,
         hair: hair,
@@ -32,12 +31,13 @@ export const POST: APIRoute = async ({ params, request }) => {
         glasses: glasses,
         mounth: mounth
       },
-    ])
+    ]).eq('user_name', user_name)
     .select();
   if (error) {
     console.log(error.message);
     return new Response(error.message);
   } else {
+    console.log("API success")
     return new Response("Insert success");
   }
 };

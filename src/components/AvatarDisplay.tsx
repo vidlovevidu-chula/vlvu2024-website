@@ -1,4 +1,17 @@
+import { useEffect, useState } from "react";
+
 const AvatarDisplay = () => {
+  const [loaded, setLoaded] = useState(false); // State to track whether data is loaded or not
+  const [body, setBody] = useState();
+  const [backhair, setBackhair] = useState();
+  const [chop, setChop] = useState();
+  const [clothes, setClothes] = useState();
+  const [eye, setEye] = useState();
+  const [glasses, setGlasses] = useState();
+  const [hair, setHair] = useState();
+  const [mounth, setMounth] = useState();
+  const [pants, setPants] = useState();
+  const [shoes, setShoes] = useState();
   function getCookie(cname: string) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -14,116 +27,113 @@ const AvatarDisplay = () => {
     }
     return "";
   }
-  let _data = getCookie("characters");
 
-  if (_data === "") {
-    _data = JSON.stringify({
-      body: "body1",
-      backhair: "",
-      chop: "",
-      clothes: "",
-      eye: "",
-      glasses: "",
-      hair: "",
-      mounth: "",
-      pants: "",
-      shoes: "",
-    });
+  async function initLoading() {
+    const username = getCookie("id");
+    const res = await fetch(`/api/characters?username=${username}`);
+    const result = await res.json();
+    const data = result[0];    
+    console.log(data);
+    
+    setBody(data.body);
+    setBackhair(data.back_hair);
+    setChop(data.chop);
+    setClothes(data.clothes);
+    setEye(data.eye);
+    setGlasses(data.glasses);
+    setHair(data.hair);
+    setMounth(data.mounth);
+    setPants(data.pants);
+    setShoes(data.shoes);
   }
 
-  const data = JSON.parse(_data);
-  const $body = data.body;
-  const $backhair = data.backhair;
-  const $chop = data.chop;
-  const $clothes = data.clothes;
-  const $eye = data.eye;
-  const $glasses = data.glasses;
-  const $hair = data.hair;
-  const $mounth = data.mounth;
-  const $pants = data.pants;
-  const $shoes = data.shoes;
+  useEffect(() => {
+    initLoading();
+  }, []);
 
   return (
-    <div className="relative">
-      {$backhair === "" && (
+    <div className="flex relative items-center justify-center">
+
+      {backhair === "" && (
         <img
-          src={`/assets/body/${$body}.png`}
-          className="object-scale-down w-[450px] h-[450px] justify-center"
+          src={`/assets/body/${body}.png`}
+          className=" max-h-[387px] max-w-[387px] w-full h-full"
           alt="body"
         />
       )}
-      {$backhair !== "" && (
+      {backhair !== "" && (
         <>
           <img
-            src={`/assets/body/${$body}.png`}
-            className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2 "
+            src={`/assets/body/${body}.png`}
+            className="absolute max-h-[387px] w-full h-full  max-w-[387px]"
             alt="body"
           />
           <img
-            src={`/assets/backhair/${$backhair}.png`}
-            className="object-scale-down w-[450px] h-[450px] justify-center"
+            src={`/assets/backhair/${backhair}.png`}
+            className="max-w-[387px] max-h-[387px] bottom-0 w-full h-full "
             alt="backhair"
           />
         </>
       )}
-      {$eye !== "" && (
+      {eye !== "" && (
         <img
-          src={`/assets/eye/${$eye}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/eye/${eye}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="eye"
         />
       )}
-      {$glasses !== "" && (
+      {glasses !== "" && (
         <img
-          src={`/assets/glasses/${$glasses}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/glasses/${glasses}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="mounth"
         />
       )}
-      {$hair !== "" && (
+      {hair !== "" && (
         <img
-          src={`/assets/hair/${$hair}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/hair/${hair}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="hair"
         />
       )}
-      {$mounth !== "" && (
+      {mounth !== "" && (
         <img
-          src={`/assets/mounth/${$mounth}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/mounth/${mounth}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="mounth"
         />
       )}
-      {$clothes !== "" && (
+      {clothes !== "" && (
         <img
-          src={`/assets/clothes/${$clothes}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/clothes/${clothes}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="clothes"
         />
       )}
-      {$pants !== "" && (
+      {pants !== "" && (
         <img
-          src={`/assets/pants/${$pants}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/pants/${pants}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="pants"
         />
       )}
-      {$chop !== "" && (
+      {chop !== "" && (
         <img
-          src={`/assets/chop/${$chop}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          src={`/assets/chop/${chop}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="chop"
         />
       )}
-      {$shoes !== "" && (
+      {shoes !== "" && (
         <img
-          src={`/assets/shoes/${$shoes}.png`}
-          className="object-scale-down absolute w-[450px] h-[450px] bottom-0 left-[238px] transform -translate-x-1/2"
+          src={`/assets/shoes/${shoes}.png`}
+          className="absolute max-w-[387px] max-h-[387px] w-full h-full "
           alt="shoes"
         />
       )}
     </div>
   );
 };
+
 
 export default AvatarDisplay;

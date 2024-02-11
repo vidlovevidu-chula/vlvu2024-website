@@ -11,16 +11,17 @@ export const POST: APIRoute = async ({ params, request }) => {
     const role = datas.get('role');
     const { data, error } = await supabase
         .from("users")
-        .insert([
+        .update([
             {
-                user_name: user_name,
                 student_id: student_id,
                 name: name,
                 role: role,
             },
-        ])
+        ]).eq('user_name', user_name)
         .select();
     if (error) {
+        console.log(error.message);
+        
         return new Response(error.message);
     }
     else {
@@ -43,6 +44,8 @@ export const POST: APIRoute = async ({ params, request }) => {
         ])
         .select();
         if (error) {
+            console.log(error.message);
+            
             return new Response(error.message);
         }
         return new Response("Success");

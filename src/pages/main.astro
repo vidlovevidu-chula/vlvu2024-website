@@ -3,7 +3,7 @@ import AvatarDisplay from "../components/AvatarDisplay";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 
-const name = Astro.cookies.get('name');
+const name = Astro.cookies.get('user_name');
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">
@@ -12,13 +12,7 @@ const name = Astro.cookies.get('name');
       <!-- top navbar --> 
       <Navbar />
       <!-- top navbar --> 
-      
-      <!-- avatar --> 
-      <img
-        src="assets/icon/cloud.svg"
-        alt="cloud"
-        class="absolute left-3 z-50"
-      />
+
       <AvatarDisplay client:only />
 
       <p

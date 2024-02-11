@@ -20,7 +20,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <div class="box">
-      <form id="form" action="/mbti" method="post">
+      <form id="form" action="/main" method="post">
         <img
           src="../../public/assets/regis/just lego.png"
           alt="justlogo"
@@ -167,14 +167,40 @@ import Layout from "../layouts/Layout.astro";
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
   const button = document.getElementById("ลงทะเบียน");
   button?.addEventListener("click", async () => {
-    console.log("PLZ");
     const name = document.getElementById("ชื่อจริง-นามสกุล").value;
+    setCookie('name', name);
     const student_id = document.getElementById("รหัสนิสิต").value;
     const role = document.getElementById("status").value;
-    setCookie('name', name, 30);
-    setCookie('student_id', student_id, 30);
-    setCookie('role', role, 30);
+    const user_name = getCookie('id');
+    const data = new FormData();
+    data.append('user_name', user_name)
+    data.append("name", name);
+    data.append("student_id", student_id);
+    data.append("role", role);
+    const response = await fetch("/api/user", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+    });
+    const res = await response.json();
+
   });
 </script>
