@@ -2,13 +2,10 @@ import type { APIRoute } from "astro";
 import type { Provider } from "@supabase/supabase-js";
 import { supabase } from "../../../utils/supabase";
 
-export const POST: APIRoute = async ({ request, cookies, redirect }) => {
-  const formData = await request.formData();
-  const provider = formData.get("provider")?.toString();
+export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 
-  if (provider) {
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: provider as Provider,
+      provider: 'google',
       options: {
         redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callback"
       },
@@ -20,5 +17,3 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     console.log(data.provider);
     return redirect(data.url);
   }
-  else return new Response("");
-};
