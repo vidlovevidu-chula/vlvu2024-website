@@ -14,5 +14,5 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     // if (error) {
     //   return new Response(error.message, { status: 500 });
     // }
-    return redirect('www.google.com');
+    return new Response("Test res");
   }
