@@ -8,21 +8,21 @@ import Layout from "../layouts/Layout.astro";
   >
     <div class="flex items-center">
       <img
-        src="../public/assets/regis/logo_thai_white1 1.png"
+        src="/assets/regis/logo_thai_white1 1.png"
         alt="logovidva"
         class="h-15"
       />
       <img
-        src="../public/assets/regis/สโมขาว 1.png"
+        src="/assets/regis/สโมขาว 1.png"
         alt="สโมขาว"
         class="h-12 mb-2"
       />
     </div>
 
     <div class="box">
-      <form id="form" action="#" autocomplete="off">
+      <form id="form" action="/main" method="post">
         <img
-          src="../../public/assets/regis/just lego.png"
+          src="/assets/regis/just lego.png"
           alt="justlogo"
           class="center"
         />
@@ -31,43 +31,49 @@ import Layout from "../layouts/Layout.astro";
           <h1>ลงทะเบียนเข้างาน</h1>
         </div>
         <div>
-          <label for="ชื่อจริง-นามสกุล">ชื่อจริง-นามสกุล</label><br />
-          <input
-            id="ชื่อจริง-นามสกุล"
-            name="ชื่อจริง-นามสกุล"
-            type="text"
-            placeholder="ชื่อจริง-นามสกุล"
-            class="center"
-            required
-          />
+          <label for="ชื่อจริง-นามสกุล"
+            >ชื่อจริง-นามสกุล<br />
+            <input
+              id="ชื่อจริง-นามสกุล"
+              name="name"
+              type="text"
+              placeholder="ชื่อจริง-นามสกุล"
+              class="center"
+              required
+            />
+          </label>
         </div>
         <div>
-          <label for="status">สถานภาพ</label><br />
-          <select name="status" id="status" class="center">
-            <option value="Custudent">นิสิตจุฬา</option>
-            <option value="teacher">อาจารย์และบุคลากรจุฬา</option>
-            <option value="student">นักเรียน/นักศึกษา</option>
-            <option value="anthoer">ประชาชนทั่วไป</option>
-          </select>
+          <label for="status"
+            >สถานภาพ<br />
+            <select name="status" id="status" class="center">
+              <option value="Custudent">นิสิตจุฬา</option>
+              <option value="teacher">อาจารย์และบุคลากรจุฬา</option>
+              <option value="student">นักเรียน/นักศึกษา</option>
+              <option value="anthoer">ประชาชนทั่วไป</option>
+            </select>
+          </label>
         </div>
         <div>
-          <label for="รหัสนิสิต">รหัสนิสิต</label><br />
-          <input
-            id="รหัสนิสิต"
-            name="รหัสนิสิต"
-            type="text"
-            placeholder="รหัสนิสิต"
-            class="center"
-          />
+          <label for="รหัสนิสิต"
+            >รหัสนิสิต<br />
+            <input
+              id="รหัสนิสิต"
+              name="student_id"
+              type="text"
+              placeholder="รหัสนิสิต"
+              class="center"
+            />
+            <br />
+            <button
+              id="ลงทะเบียน"
+              name="ลงทะเบียน"
+              value="ลงทะเบียน"
+              class="center text-sm shadow-md">ลงทะเบียน</button
+            >
+          </label>
         </div>
         <br />
-        <input
-          type="submit"
-          id="ลงทะเบียน"
-          name="ลงทะเบียน"
-          value="ลงทะเบียน"
-          class="center text-sm shadow-md"
-        />
       </form>
     </div>
   </main>
@@ -152,3 +158,49 @@ import Layout from "../layouts/Layout.astro";
     height: 75px;
   }
 </style>
+
+<script is:inline>
+  function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  const button = document.getElementById("ลงทะเบียน");
+  button?.addEventListener("click", async () => {
+    const name = document.getElementById("ชื่อจริง-นามสกุล").value;
+    setCookie('name', name);
+    const student_id = document.getElementById("รหัสนิสิต").value;
+    const role = document.getElementById("status").value;
+    const user_name = getCookie('id');
+    const data = new FormData();
+    data.append('user_name', user_name)
+    data.append("name", name);
+    data.append("student_id", student_id);
+    data.append("role", role);
+    const response = await fetch("/api/user", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+    });
+    const res = await response.json();
+
+  });
+</script>
