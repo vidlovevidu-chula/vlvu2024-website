@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import type { Provider } from "@supabase/supabase-js";
 import { supabase } from "../../../utils/supabase";
 
-export const POST: APIRoute = async ({ request, cookies, redirect }) => {
+export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request.formData();
   const provider = formData.get("provider")?.toString();
 
