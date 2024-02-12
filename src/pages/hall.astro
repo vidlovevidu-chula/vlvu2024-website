@@ -3,25 +3,24 @@ import Avatar from "../components/Avatar";
 import AvatarDisplay from "../components/AvatarDisplay";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
-
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">
   <main class="min-h-screen bg-gradient-to-b from-[#FBAEB4] to-[#FEDFC2]">
     <div class="max-w-screen-mobile mx-auto relative px-8">
-      <!-- top navbar --> 
+      <!-- top navbar -->
       <Navbar />
-      <!-- top navbar --> 
-      
-       <!-- avatar --> 
-       <div class="grid grid-cols-2 grid-rows-2 grid-flow-col">
+      <!-- top navbar -->
+
+      <!-- avatar -->
+      <div class="grid grid-cols-2 grid-rows-2 grid-flow-col">
         <div class="place-content-center overflow-hidden">
           <img
             src="assets/icon/cloud.svg"
             alt="cloud"
             class="absolute left-3 z-50"
           />
-          <AvatarDisplay client:load/>
+          <AvatarDisplay id="1st" client:load />
 
           <p
             class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
@@ -31,60 +30,58 @@ import Layout from "../layouts/Layout.astro";
         </div>
 
         <div class="place-content-center overflow-hidden">
-            <img
-              src="assets/icon/cloud.svg"
-              alt="cloud"
-              class="absolute left-3 z-50"           
-            />
-            <AvatarDisplay client:load/>
-  
-            <p
-              class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-            >
+          <img
+            src="assets/icon/cloud.svg"
+            alt="cloud"
+            class="absolute left-3 z-50"
+          />
+          <AvatarDisplay id="2nd" client:load />
+
+          <p
+            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
+          >
             Maipro2 (temp)
-            </p>
-          </div>
+          </p>
+        </div>
 
-          <div class="place-content-center overflow-hidden">
-            <img
-              src="assets/icon/cloud.svg"
-              alt="cloud"
-              class="absolute right-3 z-50 scale-x-[-1]"            
-            />
-            <AvatarDisplay client:load/>
-  
-            <p
-              class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-            >
+        <div class="place-content-center overflow-hidden">
+          <img
+            src="assets/icon/cloud.svg"
+            alt="cloud"
+            class="absolute right-3 z-50 scale-x-[-1]"
+          />
+          <AvatarDisplay id="3rd" client:load />
+
+          <p
+            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
+          >
             Maipro3 (temp)
-            </p>
-          </div>
+          </p>
+        </div>
 
+        <div class="place-content-center overflow-hidden">
+          <img
+            src="assets/icon/cloud.svg"
+            alt="cloud"
+            class="absolute right-3 z-50 scale-x-[-1]"
+          />
+          <AvatarDisplay id="4th" client:load />
 
-          <div class="place-content-center overflow-hidden">
-            <img
-              src="assets/icon/cloud.svg"
-              alt="cloud"
-              class="absolute right-3 z-50 scale-x-[-1]"            
-            />
-            <AvatarDisplay client:load/>
-  
-            <p
-              class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-            >
+          <p
+            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
+          >
             Maipro4 (temp)
-            </p>
-          </div>
-
-
+          </p>
+        </div>
       </div>
-      <!-- avatar --> 
+      <!-- avatar -->
 
-      <!-- Bottom div --> 
-      <div class="grid grid-cols-3 place-items-center ">
-        <a 
+      <!-- Bottom div -->
+      <div class="grid grid-cols-3 place-items-center">
+        <a
           href="/event"
-          class="flex flex-col justify-center items-center gap-2">
+          class="flex flex-col justify-center items-center gap-2"
+        >
           <img src="assets/icon/mail.svg" alt="event" class="w-[67px]" />
           <p class="font-line font-semibold text-center text-white text-lg">
             Event
@@ -99,9 +96,10 @@ import Layout from "../layouts/Layout.astro";
             Customize
           </p>
         </a>
-        <a 
+        <a
           href="/relation"
-          class="flex flex-col justify-center items-center gap-2">
+          class="flex flex-col justify-center items-center gap-2"
+        >
           <img src="assets/icon/heart.svg" alt="relation" class="w-[67px]" />
           <p class="font-line font-semibold text-center text-white text-lg">
             Relation
