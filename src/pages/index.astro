@@ -3,14 +3,14 @@
   <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
 
       <form
-      action="/api/auth/signin"
+      action="/register"
 
         method="post"
         class="grid grid-cols-1 gap-3 w-full"
       >
 
       <form
-      action="/api/auth/signin"
+      action="/register"
       method="post"
         class="w-full max-w-md mt-6 flex flex-col gap-2"
       >
@@ -19,6 +19,7 @@
           name="provider"
           class="w-full dark:bg-zinc-100 p-1.5 border border-zinc-300 dark:border-zinc-100 flex justify-center items-center gap-2 rounded-md mt-2 dark:text-zinc-900 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed"
           type="submit"
+          id="google"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,5 +50,15 @@
     </section>
   </main>
 
-  <script></script>
+  <script is:inline>
+    const button = document.getElementById('google');
+    button.addEventListener('click', async ()=>{
+      const response = await fetch("/api/auth/signin", {
+      method: "POST",
+      mode: "no-cors",
+      body: data,
+    });
+    const res = await response.json();
+    })
+  </script>
 </div>

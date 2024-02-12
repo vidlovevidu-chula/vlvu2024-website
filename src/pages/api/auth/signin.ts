@@ -10,7 +10,7 @@ export const POST: APIRoute = async ({request}) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: "http://localhost:4321/api/auth/callback"
+        redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callback"
       },
     });
 

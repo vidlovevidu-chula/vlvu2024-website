@@ -1,6 +1,8 @@
 ---
 import AvatarDisplay from "../components/AvatarDisplay";
 import Name from "../components/Name";
+import Modal from "../components/Modal.astro";
+
 
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
@@ -58,6 +60,11 @@ const id = Astro.cookies.get("id")?.value || "";
         class="bg-white px-6 py-6 text-center mr-6 w-auto h-8 font-line text-md font-bold rounded-2xl flex items-center justify-center"
         >View your ticket</a
       >
+      <a
+      href="/party"
+      class="bg-white px-6 py-6 text-center mr-6 w-auto h-8 font-line text-md font-bold rounded-2xl flex items-center justify-center"
+      >Create party</a
+    >
     </div>
   </main>
 </Layout>

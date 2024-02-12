@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Part from "../components/Party";
+---
+
+<Layout>
+   <div
+    class="bg-web-bg min-h-screen flex justify-center items-center font-line"
+  >
+    <form action="/main" method="POST" class="text-center">
+      <label>
+        Party name
+        <br />
+        <input
+          id="party"
+          name="name"
+          type="text"
+          placeholder="party-name"
+          class="center"
+          required
+        />
+      </label>
+      <button
+        id="enter"
+        name="enter"
+        value="enter"
+        class="center text-sm shadow-md"
+      >
+        enter
+      </button>
+    </form>
+  </div>
+</Layout>
+
+<script is:inline>
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+  
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  
+    const button = document.getElementById("enter");
+    button?.addEventListener("click", async () => {
+    
+      const party_name = document.getElementById("party").value;
+      const id = getCookie('id');
+
+      const data = new FormData();
+      data.append('create_by', id)
+      data.append("party_name", party_name);
+
+      const response = await fetch("/api/party", {
+        method: "POST",
+        mode: "no-cors",
+        body: data,
+      });
+      const res = await response.json();
+  
+    });
+  </script>
