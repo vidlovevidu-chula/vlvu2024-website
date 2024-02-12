@@ -32,6 +32,9 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^2.39.3
     version: 2.39.3
+  '@types/micromatch':
+    specifier: ^4.0.6
+    version: 4.0.6
   '@types/react':
     specifier: ^18.2.51
     version: 18.2.51
@@ -1045,6 +1048,10 @@ packages:
       '@babel/types': 7.23.6
     dev: false
 
+  /@types/braces@3.0.4:
+    resolution: {integrity: sha512-0WR3b8eaISjEW7RpZnclONaLFDf7buaowRHdqLp4vLj54AsSAYWfh3DRbfiYJY9XDxMgx1B4sE1Afw2PGpuHOA==}
+    dev: false
+
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
@@ -1065,6 +1072,12 @@ packages:
     resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==}
     dependencies:
       '@types/unist': 3.0.2
+    dev: false
+
+  /@types/micromatch@4.0.6:
+    resolution: {integrity: sha512-2eulCHWqjEpk9/vyic4tBhI8a9qQEl6DaK2n/sF7TweX9YESlypgKyhXMDGt4DAOy/jhLPvVrZc8pTDAMsplJA==}
+    dependencies:
+      '@types/braces': 3.0.4
     dev: false
 
   /@types/ms@0.7.34:

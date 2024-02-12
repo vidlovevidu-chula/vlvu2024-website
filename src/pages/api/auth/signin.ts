@@ -1,18 +1,23 @@
 import type { APIRoute } from "astro";
-import type { Provider } from "@supabase/supabase-js";
 import { supabase } from "../../../utils/supabase";
+export const prerender = false;
 
-export const POST: APIRoute = async ({ request, cookies, redirect }) => {
+
+export const POST: APIRoute = async ({request}) => {
+
+  console.log("Enter post");
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callback"
+        redirectTo: "http://localhost:4321/api/auth/callback"
       },
     });
 
     if (error) {
+      console.log(error.message)
+
       return new Response(error.message, { status: 500 });
     }
-    return redirect(data.url);
+    return Response.redirect(data.url);
   }

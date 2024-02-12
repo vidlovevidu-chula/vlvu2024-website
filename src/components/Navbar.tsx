@@ -15,15 +15,15 @@ import { EmojioneMonotoneTopHat } from "./Icon/Glasses";
 const Navbar = () => {
   const Menus = [
     { id: 0, name: "Body", dis: "translate-x-0" },
-    { id: 1, name: "Eye", dis: "translate-x-36" },
-    { id: 2, name: "Hair", dis: "translate-x-36" },
-    { id: 3, name: "BackHair", dis: "translate-x-36" },
-    { id: 4, name: "Mounth", dis: "translate-x-36" },
-    { id: 5, name: "Clothes", dis: "translate-x-36" },
-    { id: 6, name: "Pants", dis: "translate-x-36" },
-    { id: 7, name: "Chop", dis: "translate-x-36" },
-    { id: 8, name: "Shoes", dis: "translate-x-36" },
-    { id: 9, name: "Glasses", dis: "translate-x-72" },
+    { id: 1, name: "Eye", dis: "translate-x-32" },
+    { id: 2, name: "Hair", dis: "translate-x-32" },
+    { id: 3, name: "BackHair", dis: "translate-x-32" },
+    { id: 4, name: "Mounth", dis: "translate-x-32" },
+    { id: 5, name: "Clothes", dis: "translate-x-32" },
+    { id: 6, name: "Pants", dis: "translate-x-32" },
+    { id: 7, name: "Chop", dis: "translate-x-32" },
+    { id: 8, name: "Shoes", dis: "translate-x-32" },
+    { id: 9, name: "Glasses", dis: "translate-x-64" },
   ];
 
   const [active, setActive] = useState(0);
@@ -92,7 +92,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-white max-h-[4.4rem] px-6 rounded-t-xl ">
-      <ul className="flex relative justify-between ml-10 mr-10">
+      <ul className="flex relative justify-between">
         <span
           className={`bg-gradient-to-r from-pink to-web-bg z-0 duration-500 ${
             getItemRender()[id].dis

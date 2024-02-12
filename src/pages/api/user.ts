@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { supabase } from "../../utils/supabase";
 
-export const POST: APIRoute = async ({ params, request }) => {
+export const POST: APIRoute = async ({ request }) => {
     const datas = await request.formData();
     console.log(datas);
 
@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ params, request }) => {
     const name = datas.get('name');
     const student_id = datas.get('student_id');
     const role = datas.get('role');
-    const { data, error } = await supabase
+    const { error } = await supabase
         .from("users")
         .update([
             {
@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ params, request }) => {
         return new Response(error.message);
     }
     else {
-        const { data, error } = await supabase
+        const { error } = await supabase
         .from("character")
         .insert([
           {
@@ -49,5 +49,22 @@ export const POST: APIRoute = async ({ params, request }) => {
             return new Response(error.message);
         }
         return new Response("Success");
+    }
+}
+
+
+export const GET: APIRoute = async ({ request }) => {
+    const urlSearchParams = new URL(request.url);
+    const param = urlSearchParams.searchParams.get('username')
+    let { data: users, error } = await supabase
+        .from('users')
+        .select('*').eq('user_name', param)
+
+    if (error) {
+        console.log(error);
+        return new Response(error.message);
+    }
+    else {
+        return new Response(JSON.stringify(users));
     }
 }

@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { supabase } from "../../../utils/supabase";
+export const prerender = false;
 
 export const GET: APIRoute = async ({ url, cookies, redirect }) => {
   const authCode = url.searchParams.get("code");
@@ -31,7 +32,7 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
     cookies.set("id", id, {
       path: "/",
     });
-    const { data: user, error } = await supabase
+    const { data: user } = await supabase
       .from("users")
       .select("*")
       .eq("user_name", id);
@@ -42,7 +43,7 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
       
       return redirect("/main");
     } else {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("users")
         .insert([{ user_name: id }])
         .select();

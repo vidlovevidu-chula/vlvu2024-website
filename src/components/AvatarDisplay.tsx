@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const AvatarDisplay = () => {
+const AvatarDisplay = (prop: {id: string}) => {
   const [loaded, setLoaded] = useState(false); // State to track whether data is loaded or not
   const [body, setBody] = useState();
   const [backhair, setBackhair] = useState();
@@ -29,11 +29,10 @@ const AvatarDisplay = () => {
   }
 
   async function initLoading() {
-    const username = getCookie("id");
+    const username = prop.id;
     const res = await fetch(`/api/characters?username=${username}`);
     const result = await res.json();
     const data = result[0];    
-    console.log(data);
     
     setBody(data.body);
     setBackhair(data.back_hair);

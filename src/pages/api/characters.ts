@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { supabase } from "../../utils/supabase";
 
-export const POST: APIRoute = async ({ params, request }) => {
+export const POST: APIRoute = async ({ request }) => {
   const datas = await request.formData();
 
   const user_name = datas.get("user_name");
@@ -16,7 +16,7 @@ export const POST: APIRoute = async ({ params, request }) => {
   const glasses = datas.get('glasses');
   const mounth = datas.get('mounth');
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("character")
     .update([
       {
@@ -42,7 +42,7 @@ export const POST: APIRoute = async ({ params, request }) => {
   }
 };
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ request }) => {
     const urlSearchParams = new URL(request.url);
     const param = urlSearchParams.searchParams.get('username')
     let { data: character, error } = await supabase

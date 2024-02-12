@@ -1,8 +1,9 @@
 ---
 import AvatarDisplay from "../components/AvatarDisplay";
+import NameTicket from "../components/NameTicket";
 import Layout from "../layouts/Layout.astro";
 const name = Astro.cookies.get("name");
-export const prerender = true;
+const id = Astro.cookies.get('id')?.value || "";
 
 ---
 
@@ -49,42 +50,30 @@ export const prerender = true;
           console.error("Error while capturing:", error);
         });
     });
-
-  // document.getElementById("down-ticket").addEventListener("click", function() {
-  //     const elementToCapture = document.getElementById("ticket-card");
-
-  //     // Use html2canvas to capture the content as an image with higher resolution and a transparent background
-  //     html2canvas(elementToCapture, { quality: 1.0, scale: 2, backgroundColor: "transparent" }).then(function(canvas) {
-  //         // Convert the canvas content to a data URL (JPEG format with default compression)
-  //         const dataURL = canvas.toDataURL("image/jpeg", 0.8); // 0.8 is the quality parameter (0.0 to 1.0)
-
-  //         // Open Instagram with the image ready for sharing
-  //         window.location.href = `instagram://library?AssetPath=${encodeURIComponent(dataURL)}`;
-  //     });
-  // });
 </script>
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <div class="container "id="ticket-card">
+  <main class="flex justify-center items-center flex-col">
+    <div class="container" id="ticket-card">
       <div class="card">
         <div class="username-box">
-          <p class="text-template">{name?.value}</p>
+          <NameTicket id={id} client:load/>
         </div>
         <img src="ดาวน์โหลด-03 5.svg" alt="" />
         <div class="mbti-box">
-          <p class="text-template">MBTI</p>
+          <p class="text-template">VIDYA x VIDVA</p>
         </div>
         <div class="character-box">
-          <AvatarDisplay client:load />
+          <AvatarDisplay id={id} client:load />
         </div>
       </div>
-    </div>
-    <div class="items-center left-1/2">
       <a class="download-box" id="down-ticket">
         <i class="gg-software-download"></i>
         <p class="text-down">Download</p>
       </a>
+    </div>
+    <div class="items-center left-1/2">
+
     </div>
   </main>
 </Layout>
