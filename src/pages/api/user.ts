@@ -1,11 +1,10 @@
 import type { APIRoute } from "astro";
 import { supabase } from "../../utils/supabase";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, cookies }) => {
     const datas = await request.formData();
 
-    const user_name = datas.get('user_name');
-    console.log("USER_NAME ", user_name)
+    const user_name = cookies.get('id');
     const name = datas.get('name');
     const student_id = datas.get('student_id');
     const role = datas.get('role');
@@ -13,7 +12,7 @@ export const POST: APIRoute = async ({ request }) => {
         .from("users")
         .insert([
             {
-                user_name: user_name,
+                user_name: user_name?.value,
                 student_id: student_id,
                 name: name,
                 role: role,

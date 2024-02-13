@@ -220,7 +220,6 @@ const { data, error } = await supabase.auth.setSession({
     const role = document.getElementById("status").value;
     const user_name = getCookie('id');
     const data = new FormData();
-    data.append('user_name', user_name)
     data.append("name", name);
     data.append("student_id", student_id);
     data.append("role", role);
