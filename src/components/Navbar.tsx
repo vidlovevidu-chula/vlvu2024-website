@@ -92,9 +92,9 @@ const Navbar = () => {
 
   return (
     <div className="bg-white max-h-[4.4rem] px-6 rounded-t-xl ">
-      <ul className="flex relative justify-between">
+      <ul className="flex static justify-between">
         <span
-          className={`bg-gradient-to-r from-pink to-web-bg z-0 duration-500 ${
+          className={`bg-gradient-to-r from-pink to-web-bg z-10 duration-500 ${
             getItemRender()[id].dis
           } border-4  h-[67px] w-[67px] absolute border-web-bg
          -top-[32px] rounded-full ${before} ${after}
