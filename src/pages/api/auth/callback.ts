@@ -3,6 +3,7 @@ import { supabase } from "../../../utils/supabase";
 
 export const GET: APIRoute = async ({ url, cookies, redirect }) => {
   const authCode = url.searchParams.get("code");
+  console.log("AUTH", authCode);
 
   if (!authCode) {
     return new Response("No code provided", { status: 400 });
@@ -22,6 +23,8 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
   cookies.set("sb-refresh-token", refresh_token, {
     path: "/",
   });
+
+  console.log("Get token")
 
   return redirect("/register");
 };
