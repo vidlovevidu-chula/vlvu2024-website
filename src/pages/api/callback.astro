@@ -2,6 +2,7 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 const supabaseUrl = "https://nratvbrsbqhnqhsyzrqo.supabase.co";
 const supabaseKey = import.meta.env.SUPABASE_KEY;
+export const prerender = true;
 
 const authCode = Astro.url.searchParams.get("code");
 console.log(authCode);
