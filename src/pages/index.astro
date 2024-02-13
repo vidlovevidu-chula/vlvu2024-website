@@ -1,11 +1,16 @@
 ---
-import Login from '../components/Login'
+import Login from "../components/Login";
+import Layout from "../layouts/Layout.astro";
 const supabaseKey = await import.meta.env.SUPABASE_KEY;
 export const prerender = true;
 ---
 
-<div class="w-full bg-web-bg min-h-screen flex flex-col items-center justify-center">
-  <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
-    <Login supabaseKey={supabaseKey} client:only/>
-  </main>
-</div>
+<Layout>
+  <div
+    class="w-full bg-web-bg min-h-screen flex flex-col items-center justify-center"
+  >
+    <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
+      <Login supabaseKey={supabaseKey} client:only />
+    </main>
+  </div>
+</Layout>
