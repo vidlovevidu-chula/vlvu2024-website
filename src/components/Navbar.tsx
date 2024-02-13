@@ -66,25 +66,25 @@ const Navbar = () => {
   const getIcon = (name: string, isSelected: boolean) => {
     switch (name) {
       case "Body":
-        return <TwemojiBoyLightSkinTone isSelected={isSelected} />;
+        return <TwemojiBoyLightSkinTone isSelected={false} />;
       case "Eye":
-        return <MdiEye isSelected={isSelected} />;
+        return <MdiEye isSelected={false} />;
       case "Hair":
-        return <MingcuteHair2Fill isSelected={isSelected} />;
+        return <MingcuteHair2Fill isSelected={false} />;
       case "BackHair":
-        return <IconParkOutlineHairBrush isSelected={isSelected} />;
+        return <IconParkOutlineHairBrush isSelected={false} />;
       case "Mounth":
-        return <StreamlineMouthLipSolid isSelected={isSelected} />;
+        return <StreamlineMouthLipSolid isSelected={false} />;
       case "Clothes":
-        return <TablerShirtFilled isSelected={isSelected} />;
+        return <TablerShirtFilled isSelected={false} />;
       case "Pants":
-        return <PhPantsFill isSelected={isSelected} />;
+        return <PhPantsFill isSelected={false} />;
       case "Chop":
-        return <MingcuteCoatFill isSelected={isSelected} />;
+        return <MingcuteCoatFill isSelected={false} />;
       case "Shoes":
-        return <MingcuteShoeFill isSelected={isSelected} />;
+        return <MingcuteShoeFill isSelected={false} />;
       case "Glasses":
-        return <EmojioneMonotoneTopHat isSelected={isSelected} />;
+        return <EmojioneMonotoneTopHat isSelected={false} />;
       default:
         return;
     }
@@ -94,7 +94,7 @@ const Navbar = () => {
     <div className="bg-white max-h-[4.4rem] px-6 rounded-t-xl ">
       <ul className="flex static justify-between">
         <span
-          className={`bg-gradient-to-r from-pink to-web-bg z-10 duration-500 ${
+          className={`bg-transparent${
             getItemRender()[id].dis
           } border-4  h-[67px] w-[67px] absolute border-web-bg
          -top-[32px] rounded-full ${before} ${after}

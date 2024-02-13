@@ -11,6 +11,7 @@ import {
   pants,
   shoes,
 } from "../store";
+import { useEffect, useState } from "react";
 
 const Avatar = () => {
   const $body = useStore(body);
@@ -23,6 +24,29 @@ const Avatar = () => {
   const $mounth = useStore(mounth);
   const $pants = useStore(pants);
   const $shoes = useStore(shoes);
+  const [pant, setPant] = useState('z-10');
+  const [clothe, setClothe] = useState('z-0');
+  const [shoe, setShoe] = useState('left-[50%]');
+
+
+  useEffect(() => {
+    if ($pants === 'pants2' || $pants==='pants4' || $pants === 'pants5' || $pants === 'pants7') {
+      setPant('z-0');
+      setClothe('z-10');
+    }
+    else {
+      setPant('z-10');
+      setClothe('z-0')
+    }
+    if ($shoes === 'shoes4' || $shoes === 'shoes5') {
+      setShoe('left-[53%]')
+    }
+    else {
+      setShoe('left-[50%]')
+    }
+  }, [$pants, shoes])
+  
+  
 
 
   return (
@@ -79,28 +103,28 @@ const Avatar = () => {
       {$clothes !== "" && (
         <img
           src={`/assets/clothes/${$clothes}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className={`absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2 ${clothe}`}
           alt="clothes"
         />
       )}
       {$pants !== "" && (
         <img
           src={`/assets/pants/${$pants}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className={`absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2 ${pant}`}
           alt="pants"
         />
       )}
       {$chop !== "" && (
         <img
           src={`/assets/chop/${$chop}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2"
+          className="absolute w-[450px] h-[450px] bottom-0 left-1/2 transform -translate-x-1/2 z-20"
           alt="chop"
         />
       )}
       {$shoes !== "" && (
         <img
           src={`/assets/shoes/${$shoes}.png`}
-          className="absolute w-[450px] h-[450px] bottom-0 left-[52%] transform -translate-x-1/2"
+          className={`absolute w-[450px] h-[450px] bottom-0 transform -translate-x-1/2 ${shoe}`}
           alt="shoes"
         />
       )}
