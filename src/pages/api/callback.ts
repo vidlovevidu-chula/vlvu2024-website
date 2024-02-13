@@ -9,7 +9,7 @@ export const GET: APIRoute = async ({ request, redirect, cookies, url }) => {
   console.log("Auth code", authCode);
 
   if (!authCode) {
-    return Response.json({ error: "No code provided " }, { status: 400 });
+    return Response.json({ error: "No code provided "+url }, { status: 400 });
   }
 
   const supabase = createRouteHandlerClient(
