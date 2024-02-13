@@ -3,7 +3,7 @@ import Avatar from "../components/Avatar";
 import AvatarDisplay from "../components/AvatarDisplay";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
-
+export const prerender = false;
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">
@@ -21,7 +21,7 @@ import Layout from "../layouts/Layout.astro";
             alt="cloud"
             class="absolute left-3 z-50"
           />
-          <AvatarDisplay client:load/>
+          <AvatarDisplay id="1" client:load/>
 
           <p
             class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
@@ -36,7 +36,7 @@ import Layout from "../layouts/Layout.astro";
               alt="cloud"
               class="absolute left-3 z-50"           
             />
-            <AvatarDisplay client:load/>
+            <AvatarDisplay id="2" client:load/>
   
             <p
               class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
@@ -51,7 +51,7 @@ import Layout from "../layouts/Layout.astro";
               alt="cloud"
               class="absolute right-3 z-50 scale-x-[-1]"            
             />
-            <AvatarDisplay client:load/>
+            <AvatarDisplay id="3" client:load/>
   
             <p
               class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
@@ -67,7 +67,7 @@ import Layout from "../layouts/Layout.astro";
               alt="cloud"
               class="absolute right-3 z-50 scale-x-[-1]"            
             />
-            <AvatarDisplay client:load/>
+            <AvatarDisplay id="4" client:load/>
   
             <p
               class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"

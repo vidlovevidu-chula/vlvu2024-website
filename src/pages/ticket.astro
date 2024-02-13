@@ -4,7 +4,7 @@ import NameTicket from "../components/NameTicket";
 import Layout from "../layouts/Layout.astro";
 const name = Astro.cookies.get("name");
 const id = Astro.cookies.get('id')?.value || "";
-
+export const prerender = false;
 ---
 
 <script>

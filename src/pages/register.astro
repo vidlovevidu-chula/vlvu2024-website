@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+export const prerender = true;
 ---
 
 <Layout>
@@ -161,6 +161,8 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <script is:inline>
+  const studentIdInput = document.getElementById("รหัสนิสิต");
+  const statusSelect = document.getElementById("status");
   function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -204,4 +206,22 @@ import Layout from "../layouts/Layout.astro";
     const res = await response.json();
 
   });
+
+    // Add event listener for select change
+    statusSelect.addEventListener("change", function() {
+    if (this.value === "Custudent") {
+      // Enable input field
+      studentIdInput.disabled = false;
+    } else {
+      // Disable input field
+      studentIdInput.disabled = true;
+      // Clear input value
+      studentIdInput.value = "";
+    }
+  });
+
+  // Disable input field initially if the default selected option is not "Custudent"
+  if (statusSelect.value !== "Custudent") {
+    studentIdInput.disabled = true;
+  }
 </script>

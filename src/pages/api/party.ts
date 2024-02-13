@@ -13,6 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
             {
                 create_by: create_by,
                 party_name: party_name,
+                children: []
             },
         ])
         .select();

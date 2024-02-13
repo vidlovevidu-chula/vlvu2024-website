@@ -1,9 +1,43 @@
 ---
-import Avatar from "../components/Avatar";
 import AvatarDisplay from "../components/AvatarDisplay";
+import NameRelation from "../components/NameRelation";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const prerender = true;
+
+const supabaseUrl = "https://nratvbrsbqhnqhsyzrqo.supabase.co";
+const supabaseKey = import.meta.env.SUPABASE_KEY;
+const user_name = Astro.cookies.get("id");
+const party_name = Astro.cookies.get("party_name");
+
+if (typeof user_name === "undefined") {
+  return Astro.redirect("/");
+}
+
+if (typeof party_name === 'undefined') {
+  return Astro.redirect('/main')
+}
+
+const supabase = createClientComponentClient({
+  supabaseKey: supabaseKey,
+  supabaseUrl: supabaseUrl,
+});
+const { data: party, error } = await supabase
+  .from("party")
+  .select("*")
+  .eq("party_name", party_name?.value);
+console.log(party);
+let all_id: string[] = [];
+if (party) {
+  const getParty = party[0];
+  console.log(getParty);
+  let owner = getParty.create_by
+  all_id = getParty.children;
+  all_id.push(owner)
+  console.log(all_id);
+}
 ---
 
 <Layout title="Main | Vid Lovd Vid U 2024">
@@ -14,65 +48,18 @@ import Layout from "../layouts/Layout.astro";
       <!-- top navbar -->
 
       <!-- avatar -->
-      <div class="grid grid-col-2 grid-flow-col flex-wrap">
-        <div class="place-content-center overflow-hidden">
-          <img
-            src="assets/icon/cloud.svg"
-            alt="cloud"
-            class="absolute left-3 z-50"
-          />
-          <AvatarDisplay client:load />
+      <div class="grid grid-cols-2 grid-rows-2 grid-flow-row">
 
-          <p
-            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-          >
-            Maipro (temp)
-          </p>
-        </div>
 
-        <div class="place-content-center overflow-hidden">
-          <img
-            src="assets/icon/cloud.svg"
-            alt="cloud"
-            class="absolute right-3 z-50 scale-x-[-1]"
-          />
-          <AvatarDisplay client:load />
+        {
+          all_id.map((value, index) => (
+            <div class="place-content-center">
+              <AvatarDisplay id={value} client:load />
 
-          <p
-            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-          >
-            1234567891011121314151617 (temp)
-          </p>
-        </div>
-
-        <div class="place-content-center overflow-hidden">
-          <img
-            src="assets/icon/cloud.svg"
-            alt="cloud"
-            class="absolute left-3 z-50"
-          />
-          <AvatarDisplay client:load />
-
-          <p
-            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-          >
-            Maipro (temp)
-          </p>
-        </div>
-        <div class="place-content-center overflow-hidden">
-          <img
-            src="assets/icon/cloud.svg"
-            alt="cloud"
-            class="absolute right-3 z-50 scale-x-[-1]"
-          />
-          <AvatarDisplay client:load />
-
-          <p
-            class="font-tomyam font-normal text-center text-white text-xl mt-2 mb-12"
-          >
-            1234567891011121314151617 (temp)
-          </p>
-        </div>
+              <NameRelation id={value} client:load />
+            </div>
+          ))
+        }
       </div>
       <!-- avatar -->
 
