@@ -3,7 +3,6 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 const supabaseUrl = "https://nratvbrsbqhnqhsyzrqo.supabase.co";
 const supabaseKey = import.meta.env.SUPABASE_KEY;
 const user_name = Astro.cookies.get("id");
-export const prerender = true
 if (typeof user_name === 'undefined') {
   return Astro.redirect('/')
 }
