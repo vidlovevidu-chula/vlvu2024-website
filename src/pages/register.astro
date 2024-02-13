@@ -6,6 +6,9 @@ const { cookies, redirect } = Astro;
 
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");
+const id = await supabase.auth.getUser(accessToken?.value);
+
+cookies.set('id', id);
 
 if (!accessToken || !refreshToken) {
   return redirect("/");
@@ -36,7 +39,7 @@ const { data, error } = await supabase.auth.setSession({
     </div>
 
     <div class="box">
-      <form id="form" action="/main" method="post">
+      <form id="form" action="/api/user" method="post">
         <img
           src="/assets/regis/just lego.png"
           alt="justlogo"
