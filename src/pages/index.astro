@@ -5,6 +5,7 @@ const { cookies, redirect } = Astro;
 
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");
+export const prerender = true
 
 if (accessToken && refreshToken) {
   return redirect("/register");
