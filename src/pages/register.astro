@@ -6,9 +6,17 @@ const { cookies, redirect } = Astro;
 
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");
-const id = await supabase.auth.getUser(accessToken?.value);
+const { data: { user } } = await supabase.auth.getUser(accessToken?.value)
 
-cookies.set('id', id);
+const id = user?.id;
+
+if(id) {
+  cookies.set('id', id);
+  const {data: user, error} = await supabase.from('users').select('*').eq('user_name', id);
+  if (!error && user.length > 0) {
+    return redirect('/main');
+  }
+}
 
 if (!accessToken || !refreshToken) {
   return redirect("/");
