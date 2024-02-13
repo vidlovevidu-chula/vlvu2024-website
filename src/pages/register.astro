@@ -16,8 +16,6 @@ const { data, error } = await supabase.auth.setSession({
   access_token: accessToken.value,
 });
 
-export const prerender = true;
-
 ---
 
 <Layout>
