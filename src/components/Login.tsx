@@ -19,7 +19,7 @@ const Login = (props: { supabaseKey: string }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://vlvu2024-website.vercel.app/api/callback",
+        redirectTo: "http://localhost:4321/api/callback",
       },
     });
     if (!error) {
