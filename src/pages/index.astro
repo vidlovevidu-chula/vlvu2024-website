@@ -1,11 +1,17 @@
 ---
-import Login from "../components/Login";
 import Layout from "../layouts/Layout.astro";
-const supabaseKey = await import.meta.env.SUPABASE_KEY;
-export const prerender = true;
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+  return redirect("/register");
+}
 ---
 
-<Layout>
+<!-- <Layout>
   <div
     class="w-full bg-web-bg min-h-screen flex flex-col items-center justify-center"
   >
@@ -13,4 +19,14 @@ export const prerender = true;
       <Login supabaseKey={supabaseKey} client:only />
     </main>
   </div>
+</Layout> --> -->
+
+
+
+
+<Layout title="Sign in">
+  <h1>Sign in</h1>
+  <form action="/api/auth/signin" method="post">
+    <button value="google" name="provider" type="submit">Sign in with google</button>
+  </form>
 </Layout>
