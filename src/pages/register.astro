@@ -219,7 +219,6 @@ const { data, error } = await supabase.auth.setSession({
     const student_id = document.getElementById("รหัสนิสิต").value;
     const role = document.getElementById("status").value;
     const user_name = getCookie('id');
-    console.log("log", user_name);
     const data = new FormData();
     data.append('user_name', user_name)
     data.append("name", name);

@@ -3,21 +3,22 @@ import { supabase } from "../../utils/supabase";
 
 export const POST: APIRoute = async ({ request }) => {
     const datas = await request.formData();
-    console.log(datas);
 
     const user_name = datas.get('user_name');
+    console.log("USER_NAME ", user_name)
     const name = datas.get('name');
     const student_id = datas.get('student_id');
     const role = datas.get('role');
     const { error } = await supabase
         .from("users")
-        .update([
+        .insert([
             {
+                user_name: user_name,
                 student_id: student_id,
                 name: name,
                 role: role,
             },
-        ]).eq('user_name', user_name)
+        ])
         .select();
     if (error) {
         console.log(error.message);
