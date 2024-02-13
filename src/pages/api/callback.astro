@@ -5,7 +5,7 @@ const supabaseKey = import.meta.env.SUPABASE_KEY;
 export const prerender = true;
 
 const authCode = Astro.url.searchParams.get("code");
-console.log(authCode);
+console.log("Auth code", authCode);
 
 if (!authCode) {
   return new Response("No code provided ", { status: 400 });
