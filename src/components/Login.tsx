@@ -19,11 +19,7 @@ const Login = (props: { supabaseKey: string }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-<<<<<<< HEAD
-        redirectTo: "http://localhost:4321/api/callback",
-=======
         redirectTo: "https://vidlovevidu.com/api/callback",
->>>>>>> 95d566cd4aeb2633b85eb79cac1583d7b1fa23d7
       },
     });
     if (!error) {
