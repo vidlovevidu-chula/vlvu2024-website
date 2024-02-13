@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel/serverless';
+import netlify from '@astrojs/netlify';
 
 import tailwind from "@astrojs/tailwind";
 
@@ -9,6 +10,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
     output: "server",
     site: 'https://vlvu2024-website.vercel.app/',
-    adapter: vercel(),
+    adapter: netlify(),
     integrations: [react(), tailwind()],
 });

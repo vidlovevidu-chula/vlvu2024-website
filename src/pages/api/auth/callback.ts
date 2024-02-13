@@ -4,6 +4,8 @@ export const prerender = true
 
 export const GET: APIRoute = async ({ url, cookies, redirect }) => {
   const authCode = url.searchParams.get("code");
+  console.log("Code is", authCode);
+  
 
   if (!authCode) {
     return new Response("No code provided", { status: 400 });
