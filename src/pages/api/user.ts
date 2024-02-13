@@ -3,9 +3,9 @@ import { supabase } from "../../utils/supabase";
 
 export const POST: APIRoute = async ({ request }) => {
     const datas = await request.formData();
-    console.log(datas);
 
     const user_name = datas.get('user_name');
+    console.log("name : ", user_name);
     const name = datas.get('name');
     const student_id = datas.get('student_id');
     const role = datas.get('role');
