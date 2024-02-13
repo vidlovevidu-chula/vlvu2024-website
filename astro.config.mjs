@@ -7,10 +7,8 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-    output: "hybrid",
+    output: "server",
     site: 'https://vlvu2024-website.vercel.app/',
-    adapter: vercel({
-        edgeMiddleware: true,
-      }),
+    adapter: vercel(),
     integrations: [react(), tailwind()],
 });
