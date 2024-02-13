@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import type { Provider } from "@supabase/supabase-js";
 import { supabase } from "../../../utils/supabase";
-export const prerender = true
+export const prerender = false
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request.formData();
@@ -11,11 +11,10 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 
   const validProviders = ["google", "github", "discord"];
 
-  if (provider && validProviders.includes(provider)) {
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: provider as Provider,
+      provider: 'google',
       options: {
-        redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callbacj"
+        redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callback"
       },
     });
 
@@ -25,26 +24,3 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 
     return redirect(data.url);
   }
-
-  if (!email || !password) {
-    return new Response("Email and password are required", { status: 400 });
-  }
-
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) {
-    return new Response(error.message, { status: 500 });
-  }
-
-  const { access_token, refresh_token } = data.session;
-  cookies.set("sb-access-token", access_token, {
-    path: "/",
-  });
-  cookies.set("sb-refresh-token", refresh_token, {
-    path: "/",
-  });
-  return redirect("/dashboard");
-};
