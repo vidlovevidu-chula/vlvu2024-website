@@ -3,26 +3,27 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 const supabaseUrl = "https://nratvbrsbqhnqhsyzrqo.supabase.co";
 const supabaseKey = import.meta.env.SUPABASE_KEY;
 
-const authCode = Astro.url.searchParams.get('code');
+const authCode = Astro.url.searchParams.get("code");
 console.log(authCode);
 
 if (!authCode) {
   return new Response("No code provided ", { status: 400 });
 }
+
 const supabase = createRouteHandlerClient(
   { cookies: () => Astro.cookies },
   { supabaseKey: supabaseKey, supabaseUrl: supabaseUrl }
 );
 const { data, error } = await supabase.auth.exchangeCodeForSession(authCode);
+
 if (data.session) {
-    const { access_token, refresh_token } = data.session;
-    Astro.cookies.set("sb-access-token", access_token, {
+  const { access_token, refresh_token } = data.session;
+  Astro.cookies.set("sb-access-token", access_token, {
     path: "/",
   });
   Astro.cookies.set("sb-refresh-token", refresh_token, {
     path: "/",
   });
-
 
   const {
     data: { user },
@@ -32,32 +33,31 @@ if (data.session) {
     Astro.cookies.set("id", id, {
       path: "/",
     });
+
     const { data: user } = await supabase
       .from("users")
       .select("*")
       .eq("user_name", id);
+
     if (user?.length !== 0) {
       const name = user || [];
       const _name = name[0].name;
-      Astro.cookies.set('name', _name);
-      
-      return Astro.redirect('/main');
+      Astro.cookies.set("name", _name);
+
+      return Astro.redirect("/main");
     } else {
       const { error } = await supabase
         .from("users")
         .insert([{ user_name: id }])
         .select();
+
       if (error) {
-        console.log(error);
-        
+        console.error(error);
         return Response.json(error.message);
       } else {
-        return Astro.redirect('/register');
-
+        return Astro.redirect("/register");
       }
     }
-    return Astro.redirect('/register');
   }
 }
 ---
-

@@ -27,6 +27,21 @@ const { title } = Astro.props;
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <slot />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L36ESDVVE"
+    ></script>
+    <script is:inline>
+      // @ts-expect-error google tag
+      window.dataLayer = window.dataLayer || [];
+      // @ts-expect-error google tag
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      // @ts-expect-error google tag
+      gtag("js", new Date());
+      // @ts-expect-error google tag
+      gtag("config", "G-8L36ESDVVE");
+    </script>
   </body>
 </html>
 <style is:global>
