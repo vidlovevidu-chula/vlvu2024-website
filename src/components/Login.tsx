@@ -19,7 +19,7 @@ const Login = (props: { supabaseKey: string }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://vlvu2024-website.vercel.app/api/callback",
+        redirectTo: "https://vidlovevidu.com/api/callback",
       },
     });
     if (!error) {
@@ -59,9 +59,7 @@ const Login = (props: { supabaseKey: string }) => {
           d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
         ></path>
       </svg>
-      <div className="font-line font-bold">
-        Sign in with Google
-      </div>
+      <div className="font-line font-bold">Sign in with Google</div>
     </button>
   );
 };
