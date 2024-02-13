@@ -7,7 +7,7 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: "https://vlvu2024-website.vercel.app/api/auth/callback"
+        redirectTo: "https://main--vlvu2024-me.netlify.app/api/auth/callback"
       },
     });
 

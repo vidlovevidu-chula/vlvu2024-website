@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
     output: "server",
-    site: 'https://vlvu2024-website.vercel.app/',
+    site: 'https://main--vlvu2024-me.netlify.app/',
     adapter: netlify(),
     integrations: [react(), tailwind()],
 });
