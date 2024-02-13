@@ -44,9 +44,9 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
         ])
         .select();
         if (error) {
-            console.log(error.message);
+            console.log("ERROR", error.message);
             
-            return new Response(error.message);
+            return new Response(error.message + "CHAR");
         }
         return redirect('/main')
     }
