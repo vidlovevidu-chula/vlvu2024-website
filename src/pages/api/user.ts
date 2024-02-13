@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     if (error) {
         console.log(error.message);
         
-        return new Response(error.message);
+        return new Response("Register "+ error.message);
     }
     else {
         const { error } = await supabase
