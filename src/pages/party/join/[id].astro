@@ -41,6 +41,7 @@ if (party?.length !== 0 && party != null) {
       .eq("user_name", user_name)
       .select();
       console.log("USER",user);
+      console.log("NAME", user_name)
       
     if (error) {
       console.log(error.message);
