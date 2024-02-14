@@ -8,7 +8,7 @@ const NameRelation = (prop: { id: string }) => {
     const res = await fetch(`/api/user?username=${username}`);
     const result = await res.json();
     const data = result[0];
-    const _name = data.name;
+    const _name = data.nickname;
     setName(_name);
   }
 
