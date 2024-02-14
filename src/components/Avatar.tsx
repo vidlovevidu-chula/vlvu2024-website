@@ -39,12 +39,12 @@ const Avatar = () => {
       setClothe('z-0')
     }
     if ($shoes === 'shoes4' || $shoes === 'shoes5') {
-      setShoe('left-[53%]')
+      setShoe('left-[52%]')
     }
     else {
       setShoe('left-[50%]')
     }
-  }, [$pants, shoes])
+  }, [$pants, $shoes])
   
   
 
