@@ -3,40 +3,26 @@ import AvatarDisplay from "../components/AvatarDisplay";
 import NameRelation from "../components/NameRelation";
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { supabase } from "../utils/supabase";
 
-export const prerender = true;
+const { cookies, redirect } = Astro;
 
-const supabaseUrl = "https://nratvbrsbqhnqhsyzrqo.supabase.co";
-const supabaseKey = import.meta.env.SUPABASE_KEY;
-const user_name = Astro.cookies.get("id");
-const party_name = Astro.cookies.get("party_name");
-
-if (typeof user_name === "undefined") {
-  return Astro.redirect("/");
-}
-
-if (typeof party_name === 'undefined') {
-  return Astro.redirect('/main')
-}
-
-const supabase = createClientComponentClient({
-  supabaseKey: supabaseKey,
-  supabaseUrl: supabaseUrl,
-});
-const { data: party, error } = await supabase
-  .from("party")
-  .select("*")
-  .eq("party_name", party_name?.value);
-console.log(party);
-let all_id: string[] = [];
-if (party) {
-  const getParty = party[0];
-  console.log(getParty);
-  let owner = getParty.create_by
-  all_id = getParty.children;
-  all_id.push(owner)
-  console.log(all_id);
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+const { data: { user } } = await supabase.auth.getUser(accessToken?.value);
+const id = user?.id;
+let all_id : string[] = [];
+if (id) {
+  const {data: user, error} = await supabase.from('users').select('*').eq('user_name', id);
+  if (user?.length !== 0 && user != null) {
+    const party_name = user[0].partyname
+    const {data: party, error} = await supabase.from('party').select('*').eq('party_name', party_name);
+    if (party?.length !== 0 && party != null) {
+      const owner = party[0].create_by;
+      all_id = party[0].children;
+      all_id.push(owner);
+    }
+  }
 }
 ---
 
@@ -50,12 +36,10 @@ if (party) {
       <!-- avatar -->
       <div class="grid grid-cols-2 grid-rows-2 grid-flow-row">
 
-
         {
           all_id.map((value, index) => (
             <div class="place-content-center">
               <AvatarDisplay id={value} client:load />
-
               <NameRelation id={value} client:load />
             </div>
           ))
