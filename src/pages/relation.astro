@@ -13,6 +13,7 @@ const { data: { user } } = await supabase.auth.getUser(accessToken?.value);
 const id = user?.id;
 let all_id : string[] = [];
 if (id) {
+  console.log(id)
   const {data: user, error} = await supabase.from('users').select('*').eq('user_name', id);
   if (user?.length !== 0 && user != null) {
     const party_name = user[0].partyname
@@ -21,6 +22,7 @@ if (id) {
       const owner = party[0].create_by;
       all_id = party[0].children;
       all_id.push(owner);
+      console.log(all_id)
     }
   }
 }
