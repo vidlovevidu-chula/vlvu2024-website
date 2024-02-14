@@ -63,5 +63,5 @@ export const GET: APIRoute = async ({ request, redirect, cookies, url }) => {
     }
     return redirect("/");
   }
-  return redirect("/");
+  return Response.json('no');
 };
