@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro'
+const supabaseKey = await import.meta.env.SUPABASE_KEY;
+---
+<Layout title="Welcome to Astro.">
+  <style>
+    button {
+        border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #080000;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+    }
+
+button:focus{
+outline: 10;
+}
+    textarea {
+        resize: none;
+    }
+  .email {
+  position:absolute;
+  margin-left: 0cm;
+	margin-top: 1cm;
+  }
+    .message {
+  width: 700px;
+  height: 250px;
+  position:absolute;
+  margin-left: 0cm;
+	margin-top: 8cm;
+  font-size: 12pt;
+    }
+  .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    </style>
+  <div id="mem" style="margin-left:0px" class = "container">
+    <font size="6" face="MN Tomyam" color="black">
+    <h1>ลองเขียนจดหมายให้คุณในปีหน้าสิ</h1>
+  </div>
+</font>
+  <div id="mem" style="margin-left:-50px margin-top:50px" class = "container">
+    <h1>ตอนนี้มีมุมมองต่อความรักของตัวคุณเป็นยังไง<br/>
+        มองภาพชีวิตรักของตัวเองในอนาคตไว้แบบไหน<br/> 
+        จะไล่ตามหาคนที่เหมาะสม <br/>
+        จะทุ่มเทให้ใครสักคนอย่างสุดหัวใจ <br/>
+        หรือคุณที่จะกลับมารักตัวเองมากขึ้น<br/> 
+        คุณในวาเลนไทน์ปีหน้าจะเป็นยังไงนะ</h1>
+    </font>
+  </div>
+<form method="POST" id = 'Form'>
+  <div id="mem" style="margin-left:0px; margin-top:50px" class = "container">
+    ถึงตัวคุณ(อีเมล/IG):
+  </div>
+  <div class = "container">
+    <input  
+    name="email" 
+    id = "email" 
+    required />
+  </div>
+  </label>
+  <div id="mem" style="margin-left:0px; margin-top:50px" class = "container">
+  <label>
+    ข้อความถึงตัวคุณ :
+  </div>
+  <div class = "container">
+  <textarea 
+  rows="2" 
+  cols="25" 
+  class = "message" 
+  name="message" 
+  id = "message" 
+  required 
+  maxlength="500" 
+  />
+</div>
+<div id="mem" style="margin-left:0px; margin-top:300px" class = "container">
+  </label>
+  <button type="submit" >
+    ส่งจดหมาย
+  </button>
+</div>
+</form>
+<script>
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl =  'https://nratvbrsbqhnqhsyzrqo.supabase.co/'
+const supabase = createClient(supabaseUrl, supabaseKey)
+  document.getElementById("Form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    window.location.href = "/thankyou"
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    console.log( email )
+    console.log( message )
+ 
+    const { data, error } = await supabase.from('letterForm').insert([{email: email, message: message}]);
+ 
+    if (error) console.error("Error:", error);
+    else console.log("Data submitted successfully:", data);
+    });
+
+
