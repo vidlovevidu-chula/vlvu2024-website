@@ -7,11 +7,12 @@ import { supabase } from "../utils/supabase";
 
 const { cookies, redirect } = Astro;
 
-const id = cookies.get('id')?.value;
+const cook = cookies.get('id');
+const id = cook?.value;
 console.log("ID : ",id);
 let all_id : string[] = [];
 if (id) {
-  console.log(id)
+  console.log(">>>", id)
   const {data: user, error} = await supabase.from('users').select('*').eq('user_name', id);
   if (user?.length !== 0 && user != null) {
     console.log(user);
