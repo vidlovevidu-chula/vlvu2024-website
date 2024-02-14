@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { supabase } from "../../utils/supabase";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, redirect }) => {
   const datas = await request.formData();
 
   const user_name = datas.get("user_name");
@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(error.message);
   } else {
     console.log("API success")
-    return new Response("Insert success");
+    return redirect('/main')
   }
 };
 
