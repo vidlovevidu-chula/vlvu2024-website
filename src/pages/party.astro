@@ -5,16 +5,18 @@ export const prerender = false;
 
 <Layout>
   <div
-    class="bg-web-bg min-h-screen flex justify-center items-center font-line"
+    class="bg-web-bg min-h-screen flex justify-center items-center font-line p-8"
   >
-    <form action="/main" method="POST" class="text-center">
+    <form action="/main" method="POST" class="text-center flex flex-col gap-4">
+      <div class="text-center mt-4 font-line text-gray-600 font-normal text-sm">
+        ส่งลิงก์นี้ให้เพื่อน ๆ เพื่อชวนเพื่อนมาถ่ายรูปด้วยกันได้เลย !
+      </div>
       <label>
-        <br />
         <input
           id="party"
           name="name"
           type="text"
-          placeholder="party name (english only)"
+          placeholder="Party name (english only)"
           class="center"
           required
         />
@@ -23,10 +25,10 @@ export const prerender = false;
         id="enter"
         name="enter"
         value="enter"
-        class="center text-md shadow-md rounded-lg"
+        class="center text-md shadow-md rounded-lg bg-pink text-white py-4 p-3 transition-all hover:scale-105"
         type="button"
       >
-        enter
+        Enter
       </button>
       <div id="helloText" class="text-center mt-4 text-green-600 font-bold">
       </div>
@@ -83,7 +85,6 @@ export const prerender = false;
 
       // Remove the textarea
       document.body.removeChild(textarea);
-
     });
 
     document.getElementById("helloText").innerHTML =
