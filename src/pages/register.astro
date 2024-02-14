@@ -72,6 +72,20 @@ const { data, error } = await supabase.auth.setSession({
           </label>
         </div>
         <div>
+          <label for="ชื่อจริง-นามสกุล"
+            >เรียกคุณว่าอะไรดีนะ<br />
+            <input
+             accept-charset="UTF-8"
+              id="nickname"
+              name="name"
+              type="text"
+              placeholder="username"
+              class="center"
+              required
+            />
+          </label>
+        </div>
+        <div>
           <label for="status"
             >สถานภาพ<br />
             <select name="status" id="status" class="center">
@@ -216,14 +230,15 @@ const { data, error } = await supabase.auth.setSession({
   const button = document.getElementById("ลงทะเบียน");
   button?.addEventListener("click", async () => {
     const name = document.getElementById("ชื่อจริง-นามสกุล").value;
-    setCookie('name', name);
     const student_id = document.getElementById("รหัสนิสิต").value;
     const role = document.getElementById("status").value;
-    const user_name = getCookie('id');
+    const nickname = document.getElementById("nickname").value;
     const data = new FormData();
     data.append("name", name);
     data.append("student_id", student_id);
     data.append("role", role);
+    data.append("nickname", nickname);
+
     const response = await fetch("/api/user", {
       method: "POST",
       mode: "no-cors",

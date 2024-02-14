@@ -7,7 +7,9 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     const user_name = cookies.get('id');
     const name = datas.get('name');
     const student_id = datas.get('student_id');
-    const role = datas.get('role');
+    const role = datas.get('role');    
+    const nickname = datas.get('nickname');
+
     const { error } = await supabase
         .from("users")
         .insert([
@@ -16,6 +18,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
                 student_id: student_id,
                 name: name,
                 role: role,
+                nickname: nickname
             },
         ])
         .select();
