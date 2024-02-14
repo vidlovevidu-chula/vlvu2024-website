@@ -7,10 +7,7 @@ import { supabase } from "../utils/supabase";
 
 const { cookies, redirect } = Astro;
 
-const accessToken = cookies.get("sb-access-token");
-const refreshToken = cookies.get("sb-refresh-token");
-const { data: { user } } = await supabase.auth.getUser(accessToken?.value);
-const id = user?.id;
+const id = cookies.get('id')?.value;
 console.log("ID : ",id);
 let all_id : string[] = [];
 if (id) {
