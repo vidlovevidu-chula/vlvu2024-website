@@ -4,62 +4,45 @@ export const prerender = false;
 ---
 
 <Layout>
-  <div
-    class="bg-web-bg min-h-screen flex justify-center items-center font-line"
-  >
-    <form action="">
-      <div class="w-full inline-flex gap-x-2">
-        <input
-          id="party"
-          type="text"
-          placeholder="type partyname (english)"
-          class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:placeholder:text-gray-500 dark:focus:ring-gray-600"
-          value=""
-        />
+  <main class="flex flex-col self-center items-center w-full font-line mx-auto max-w-screen-sm bg-web-bg pt-4 pb-16">
+    <div class="bg-web-bg min-h-screen flex justify-center items-center font-line">
+      <form action="" class="p-8 bg-white rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">Create a Party and Invite Friends!</h1>
+        <h3 class="text-lg text-center mb-6">Party can store 4 people and cant be left!</h3>
 
-        <button
-          type="button"
-          id="enter"
-          class="js-clipboard py-3 px-4 group inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-          data-clipboard-target="#hs-clipboard-input"
-          data-clipboard-action="copy"
-          data-clipboard-success-text="Copied"
-        >
-          <svg
-            class="js-clipboard-default size-4 group-hover:rotate-6 transition"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect><path
-              d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
-            ></path></svg
-          >
-
-          <svg
-            class="js-clipboard-success hidden size-4 text-blue-600"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="20 6 9 17 4 12"></polyline></svg
-          >
-          <span class="js-clipboard-success-text">Copy</span>
-        </button>
-      </div>
-    </form>
-  </div>
+        <div class="w-full flex flex-col gap-4">
+          <label for="party" class="text-lg font-semibold text-gray-700">Party Name:</label>
+          <input id="party" type="text" placeholder="Enter party name (English)" class="input-field" />
+          <button type="button" id="enter" class="btn font-bold">Copy Party Link</button>
+        </div>
+      </form>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  .input-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: pink;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: rgb(206, 85, 125);
+  }
+</style>
+
 
 <script is:inline>
   function setCookie(cname, cvalue, exdays) {
@@ -88,9 +71,9 @@ export const prerender = false;
   const button = document.getElementById("enter");
   button?.addEventListener("click", async () => {
     const party_name = document.getElementById("party").value;
-
+    const id = getCookie("id");
     document.getElementById("party").value =
-      `https://main--vlvu2024-me.netlify.app/party/join/${party_name}`;
+      `https://main--vlvu2024-me.netlify.app/party/${party_name}/${id}`;
     const copyText = document.getElementById("party");
 
     // Select the text field
@@ -99,7 +82,7 @@ export const prerender = false;
 
     // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
-    const id = getCookie("id");
+
 
     const data = new FormData();
     data.append("create_by", id);
@@ -116,74 +99,3 @@ export const prerender = false;
     // Display "hello" text after successful submission
   });
 </script>
-
-<style>
-  h1 {
-    text-align: center;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 0%; /* 0px */
-    padding-bottom: 25px;
-  }
-
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-
-  #ลงทะเบียน {
-    width: 297px;
-    height: 43px;
-    border-radius: 10px;
-    border-color: #fff;
-    background: var(--palette-2, #fbaeb4);
-  }
-
-  form label {
-    color: #d05783;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    padding-left: 33px;
-  }
-
-  input {
-    padding: 16px;
-  }
-
-  input[type="text"],
-  select {
-    width: 297px;
-    height: 32px;
-    flex-shrink: 0;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    background: #fff;
-  }
-
-  #status {
-    width: 297px;
-    height: 32px;
-    flex-shrink: 0;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    background: #fff;
-  }
-
-  .box {
-    line-height: 60px;
-  }
-
-  .img-resize img {
-    width: 75px;
-  }
-
-  .img-resize {
-    width: 75px;
-    height: 75px;
-  }
-</style>

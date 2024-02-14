@@ -6,16 +6,16 @@ if (typeof user_name === "undefined") {
   return Astro.redirect("/");
 }
 
-const { id } = Astro.params;
+const {party_name, id } = Astro.params;
 console.log(id);
 
-if (typeof id !== "undefined") {
-  Astro.cookies.set("party_name", id);
+if (typeof id !== "undefined" && typeof party_name !== 'undefined') {
+  Astro.cookies.set("party_name", party_name);
 }
 const { data: party, error } = await supabase
   .from("party")
   .select("*")
-  .eq("party_name", id);
+  .eq("create_by", id);
 
 if (party?.length !== 0 && party != null) {
   console.log(party);
@@ -30,14 +30,14 @@ if (party?.length !== 0 && party != null) {
   const { data, error } = await supabase
     .from("party")
     .update({ children: users })
-    .eq("party_name", id)
+    .eq("party_name", party_name)
     .select();
   if (!error) {
     console.log("ID",id);
     
     const { data: user, error } = await supabase
       .from("users")
-      .update({ party: id })
+      .update({ party: party_name })
       .eq("user_name", user_name.value)
       .select();
       console.log("USER",user);
@@ -46,7 +46,7 @@ if (party?.length !== 0 && party != null) {
     if (error) {
       console.log(error.message);
     }
-    Astro.cookies.set("party_name", id || "");
+    Astro.cookies.set("party_name", party_name || "");
     return Astro.redirect("/main");
   } else {
     return new Response("Hell");
