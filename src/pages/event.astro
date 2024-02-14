@@ -94,7 +94,7 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 const supabase = createClient(supabaseUrl, supabaseKey)
   document.getElementById("Form").addEventListener("submit", async function(e) {
     e.preventDefault();
-    ///window.location.href = "/thankyou"
+    window.location.href = "/thankyou"
     var email = document.getElementById('email').value;
     var message = document.getElementById('message').value;
     console.log( email )
