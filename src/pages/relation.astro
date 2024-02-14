@@ -16,6 +16,7 @@ if (id) {
   console.log(id)
   const {data: user, error} = await supabase.from('users').select('*').eq('user_name', id);
   if (user?.length !== 0 && user != null) {
+    console.log(user);
     const party_name = user[0].party_name;
     console.log(party_name);
     const {data: party, error} = await supabase.from('party').select('*').eq('party_name', party_name);
