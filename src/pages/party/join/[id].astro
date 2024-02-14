@@ -38,7 +38,7 @@ if (party?.length !== 0 && party != null) {
     const { data: user, error } = await supabase
       .from("users")
       .update({ party: id })
-      .eq("user_name", user_name)
+      .eq("user_name", user_name.value)
       .select();
       console.log("USER",user);
       console.log("NAME", user_name)
