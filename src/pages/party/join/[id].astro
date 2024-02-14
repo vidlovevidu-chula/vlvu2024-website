@@ -33,6 +33,8 @@ if (party?.length !== 0 && party != null) {
     .eq("party_name", id)
     .select();
   if (!error) {
+    console.log("ID",id);
+    
     const { data: user, error } = await supabase
       .from("users")
       .update({ party: id })
