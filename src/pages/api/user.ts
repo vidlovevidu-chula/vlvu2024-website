@@ -23,6 +23,9 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
         ])
         .select();
     if (error) {
+        if (error.message === `duplicate key value violates unique constraint "test_pkey`){
+            return redirect('/main');
+        }
         console.log(error.message);
         
         return new Response("Register "+ error.message);
